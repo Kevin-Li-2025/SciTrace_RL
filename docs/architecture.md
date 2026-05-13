@@ -61,6 +61,18 @@ A machine-readable gate that decides whether a workflow is trustworthy enough to
 
 A scalar and explanation generated from validation quality and execution cost. This is the bridge from infrastructure to learning: successful and failed traces can become training data for planners, tool routers, and future scientific agents.
 
+### Post-Training Bundle
+
+A concrete conversion from one validated run into several training views:
+
+- `sft_chat_record`: supervised fine-tuning record with the grounded report as the target answer.
+- `dpo_preference_pair`: chosen answer versus an overclaimed rejected answer.
+- `process_reward_steps`: per-tool-call rewards linked to validation gates.
+- `tool_router_records`: accepted tool routing decisions with compact decision context.
+- `credit_assignment`: mapping from validation gates back to responsible tool classes and failure types.
+
+This makes the "trace-to-reward" claim operational. The demo does not only report a scalar reward; it exports data shapes a post-training or evaluation pipeline can consume.
+
 ### Provenance Bundle
 
 An interoperability export generated from the same trace. It has three views:
@@ -96,6 +108,7 @@ sequenceDiagram
     Runner->>Gates: trace artifacts
     Gates-->>Runner: validation scorecard
     Runner->>Store: trace JSON + reward sample + dashboard
+    Runner->>Store: post-training bundle
     Runner->>Store: provenance bundle
 ```
 
@@ -107,7 +120,7 @@ Plain logs tell what happened. SciTrace-RL adds four things:
 2. Replayable artifacts with hashes.
 3. Validation gates that produce machine-readable pass/fail scores, with optional AI semantic review.
 4. Standards-aware provenance exports for FAIR workflow records and agent observability.
-5. Reward labels that can train future orchestration policies.
+5. Post-training records for SFT, DPO, process reward modeling, and tool routing.
 
 This is the key difference between a demo agent and production AI4S infrastructure.
 
@@ -121,4 +134,4 @@ This is the key difference between a demo agent and production AI4S infrastructu
 | Validation gates | platform-level governance and scientific evaluation |
 | JSON trace store | shared trace/event store |
 | Provenance bundle | W3C PROV, Workflow Run RO-Crate, OpenTelemetry traces |
-| Reward sample | offline RL, preference data, planner evaluation |
+| Post-training bundle | SFT, DPO, process reward, credit assignment, tool-router data |

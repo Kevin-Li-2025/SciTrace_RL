@@ -1,0 +1,265 @@
+{
+  "schema_version": "0.2",
+  "trace_id": "trace_051d451555",
+  "task_id": "battery_electrolyte_additive_screen_v1",
+  "reward": {
+    "reward": 0.97,
+    "quality_score": 1.0,
+    "cost_penalty": 0.03,
+    "interpretation": "Reward combines validation quality with a small execution-cost penalty.",
+    "training_use": "Can supervise planner/tool-router choices or serve as an offline RL preference label."
+  },
+  "formats": [
+    "sft_chat_record",
+    "dpo_preference_pair",
+    "process_reward_steps",
+    "tool_router_records",
+    "credit_assignment"
+  ],
+  "sft_chat_record": {
+    "trace_id": "trace_051d451555",
+    "task_id": "battery_electrolyte_additive_screen_v1",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a scientific workflow agent. Use tools, cite retrieved evidence, state validation boundaries, and avoid deployment claims without simulation or experiment."
+      },
+      {
+        "role": "user",
+        "content": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop."
+      },
+      {
+        "role": "assistant",
+        "content": "# Agent-Grounded Candidate Report\n\n## Task\nScreen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.\n\n## Recommendation\nPrioritize **Fluoroethylene carbonate** (`FEC`) for the next dry-lab or wet-lab validation loop. The recommendation is provisional: it is based on a lightweight, reproducible proxy screen, not on high-fidelity quantum chemistry or real battery cycling data.\n\n## Evidence Chain\n- [fec_vc_reduction] Fluoroethylene Carbonate and Vinylene Carbonate Reduction: Understanding Lithium-Ion Battery Electrolyte Additives and Solid Electrolyte Interphase Formation (https://doi.org/10.1021/acs.chemmater.6b02282)\n- [electrolyte_additives_review] How electrolyte additives work in Li-ion batteries (https://doi.org/10.1016/j.ensm.2018.11.015)\n\n## Candidate Ranking\n| Rank | Candidate | Formula | Score | Key evidence |\n|---:|---|---|---:|---|\n| 1 | Fluoroethylene carbonate | C3H3FO3 | 0.890 | fec_vc_reduction, electrolyte_additives_review |\n| 2 | 1,3,2-Dioxathiolane-2,2-dioxide | C2H4O4S | 0.760 | electrolyte_additives_review, battery_safety_additives |\n| 3 | Vinylene carbonate | C3H2O3 | 0.710 | fec_vc_reduction, vc_rechargeable_review, electrolyte_additives_review |\n\n## Validation Hooks\n- Re-run `molecule_screening` with the same candidates and constraints; the output hash should match.\n- Check every cited source id in the report against the retrieval results.\n- Promote the top candidate only if the molecular-weight constraint, evidence coverage, and claim-evidence alignment gates pass.\n\n## Next Step\nReplace the proxy screening tool with a Bohrium/Lebesgue job adapter for molecular simulation, then feed validated results back into the trace-to-reward dataset.\n"
+      }
+    ],
+    "labels": {
+      "reward": 0.97,
+      "all_required_gates_passed": true,
+      "source_trace": "trace_051d451555"
+    },
+    "record_id": "sft_e4a40c73b2"
+  },
+  "dpo_preference_pair": {
+    "prompt": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+    "chosen": "# Agent-Grounded Candidate Report\n\n## Task\nScreen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.\n\n## Recommendation\nPrioritize **Fluoroethylene carbonate** (`FEC`) for the next dry-lab or wet-lab validation loop. The recommendation is provisional: it is based on a lightweight, reproducible proxy screen, not on high-fidelity quantum chemistry or real battery cycling data.\n\n## Evidence Chain\n- [fec_vc_reduction] Fluoroethylene Carbonate and Vinylene Carbonate Reduction: Understanding Lithium-Ion Battery Electrolyte Additives and Solid Electrolyte Interphase Formation (https://doi.org/10.1021/acs.chemmater.6b02282)\n- [electrolyte_additives_review] How electrolyte additives work in Li-ion batteries (https://doi.org/10.1016/j.ensm.2018.11.015)\n\n## Candidate Ranking\n| Rank | Candidate | Formula | Score | Key evidence |\n|---:|---|---|---:|---|\n| 1 | Fluoroethylene carbonate | C3H3FO3 | 0.890 | fec_vc_reduction, electrolyte_additives_review |\n| 2 | 1,3,2-Dioxathiolane-2,2-dioxide | C2H4O4S | 0.760 | electrolyte_additives_review, battery_safety_additives |\n| 3 | Vinylene carbonate | C3H2O3 | 0.710 | fec_vc_reduction, vc_rechargeable_review, electrolyte_additives_review |\n\n## Validation Hooks\n- Re-run `molecule_screening` with the same candidates and constraints; the output hash should match.\n- Check every cited source id in the report against the retrieval results.\n- Promote the top candidate only if the molecular-weight constraint, evidence coverage, and claim-evidence alignment gates pass.\n\n## Next Step\nReplace the proxy screening tool with a Bohrium/Lebesgue job adapter for molecular simulation, then feed validated results back into the trace-to-reward dataset.\n",
+    "rejected": "Deploy Fluoroethylene carbonate immediately as the final electrolyte additive. The screening score alone is sufficient and no further simulation, wet-lab validation, or expert review is needed.",
+    "preference_reason": "The chosen answer is citation-grounded, trace-backed, and keeps the recommendation provisional. The rejected answer overclaims beyond the evidence and skips required escalation.",
+    "source_trace": "trace_051d451555",
+    "reward_margin": 0.97,
+    "failure_tags_for_rejected": [
+      "overclaim",
+      "missing_escalation",
+      "unsupported_deployment"
+    ],
+    "pair_id": "dpo_852b854d6b"
+  },
+  "process_reward_steps": [
+    {
+      "step_index": 0,
+      "tool_name": "literature_search",
+      "call_id": "call_4905ffe7ea",
+      "status": "success",
+      "input_hash": "1d332d378a60b45b7f5bf828c3af32a2869ca626acc2a970a4dab85b5de27195",
+      "output_hash": "814055f722919c1d988ec39ed5bc5ba9037c797701e394489681969f57370ec6",
+      "linked_artifacts": [
+        "artifact_3403b2444a"
+      ],
+      "linked_validation_gates": [
+        "citation_integrity"
+      ],
+      "step_reward": 1.0,
+      "record_id": "prm_bfc2808e7c"
+    },
+    {
+      "step_index": 1,
+      "tool_name": "molecule_screening",
+      "call_id": "call_b2022c85b7",
+      "status": "success",
+      "input_hash": "e98127e286f7b7ed41a5bb6f2069bf023d93a3df2882f6ae0a4dc5fb1f42e0fc",
+      "output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c",
+      "linked_artifacts": [
+        "artifact_35ff7d754b"
+      ],
+      "linked_validation_gates": [
+        "artifact_replay",
+        "constraint_satisfaction"
+      ],
+      "step_reward": 1.0,
+      "record_id": "prm_cfe2fcfb21"
+    },
+    {
+      "step_index": 2,
+      "tool_name": "report_writer",
+      "call_id": "call_4521db387b",
+      "status": "success",
+      "input_hash": "cc6eb959a5b2d4d76c566da77273dca432075cb3952d2b744ecedbd47af9e67e",
+      "output_hash": "385666187c338aa14e0e9130168075094172d7fdbc0cf155afcc92a2682eaefb",
+      "linked_artifacts": [
+        "artifact_240cee50d2"
+      ],
+      "linked_validation_gates": [
+        "claim_evidence_alignment",
+        "claim_metadata_completeness",
+        "ai_claim_review"
+      ],
+      "step_reward": 1.0,
+      "record_id": "prm_a4f0b6fd44"
+    }
+  ],
+  "tool_router_records": [
+    {
+      "task_id": "battery_electrolyte_additive_screen_v1",
+      "domain": "materials_science.battery_electrolyte",
+      "route_label": "retrieve_evidence",
+      "tool_name": "literature_search",
+      "decision_context": {
+        "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+        "constraints": {
+          "molecular_weight": {
+            "min": 60,
+            "max": 180
+          },
+          "minimum_screening_score": 0.75,
+          "required_validation_gates": [
+            "citation_integrity",
+            "artifact_replay",
+            "constraint_satisfaction",
+            "claim_evidence_alignment",
+            "claim_metadata_completeness"
+          ]
+        },
+        "step_inputs_hash": "1d332d378a60b45b7f5bf828c3af32a2869ca626acc2a970a4dab85b5de27195"
+      },
+      "accepted": true,
+      "reward": 1.0,
+      "source_trace": "trace_051d451555",
+      "record_id": "router_54b99d9836"
+    },
+    {
+      "task_id": "battery_electrolyte_additive_screen_v1",
+      "domain": "materials_science.battery_electrolyte",
+      "route_label": "screen_candidates",
+      "tool_name": "molecule_screening",
+      "decision_context": {
+        "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+        "constraints": {
+          "molecular_weight": {
+            "min": 60,
+            "max": 180
+          },
+          "minimum_screening_score": 0.75,
+          "required_validation_gates": [
+            "citation_integrity",
+            "artifact_replay",
+            "constraint_satisfaction",
+            "claim_evidence_alignment",
+            "claim_metadata_completeness"
+          ]
+        },
+        "step_inputs_hash": "e98127e286f7b7ed41a5bb6f2069bf023d93a3df2882f6ae0a4dc5fb1f42e0fc"
+      },
+      "accepted": true,
+      "reward": 1.0,
+      "source_trace": "trace_051d451555",
+      "record_id": "router_9832a17712"
+    },
+    {
+      "task_id": "battery_electrolyte_additive_screen_v1",
+      "domain": "materials_science.battery_electrolyte",
+      "route_label": "write_grounded_report",
+      "tool_name": "report_writer",
+      "decision_context": {
+        "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+        "constraints": {
+          "molecular_weight": {
+            "min": 60,
+            "max": 180
+          },
+          "minimum_screening_score": 0.75,
+          "required_validation_gates": [
+            "citation_integrity",
+            "artifact_replay",
+            "constraint_satisfaction",
+            "claim_evidence_alignment",
+            "claim_metadata_completeness"
+          ]
+        },
+        "step_inputs_hash": "cc6eb959a5b2d4d76c566da77273dca432075cb3952d2b744ecedbd47af9e67e"
+      },
+      "accepted": true,
+      "reward": 1.0,
+      "source_trace": "trace_051d451555",
+      "record_id": "router_b82c26a600"
+    }
+  ],
+  "credit_assignment": [
+    {
+      "validation_gate": "citation_integrity",
+      "status": "pass",
+      "score": 1.0,
+      "target_tools": [
+        "literature_search"
+      ],
+      "failure_type": "none",
+      "source_trace": "trace_051d451555",
+      "record_id": "credit_c31e8bdb73"
+    },
+    {
+      "validation_gate": "artifact_replay",
+      "status": "pass",
+      "score": 1.0,
+      "target_tools": [
+        "molecule_screening"
+      ],
+      "failure_type": "none",
+      "source_trace": "trace_051d451555",
+      "record_id": "credit_d31fc8b859"
+    },
+    {
+      "validation_gate": "constraint_satisfaction",
+      "status": "pass",
+      "score": 1.0,
+      "target_tools": [
+        "molecule_screening"
+      ],
+      "failure_type": "none",
+      "source_trace": "trace_051d451555",
+      "record_id": "credit_537d5968f2"
+    },
+    {
+      "validation_gate": "claim_evidence_alignment",
+      "status": "pass",
+      "score": 1.0,
+      "target_tools": [
+        "report_writer"
+      ],
+      "failure_type": "none",
+      "source_trace": "trace_051d451555",
+      "record_id": "credit_79643108c8"
+    },
+    {
+      "validation_gate": "claim_metadata_completeness",
+      "status": "pass",
+      "score": 1.0,
+      "target_tools": [
+        "report_writer"
+      ],
+      "failure_type": "none",
+      "source_trace": "trace_051d451555",
+      "record_id": "credit_8b694baf02"
+    },
+    {
+      "validation_gate": "ai_claim_review",
+      "status": "skip",
+      "score": 1.0,
+      "target_tools": [
+        "report_writer"
+      ],
+      "failure_type": "not_applicable_or_not_enabled",
+      "source_trace": "trace_051d451555",
+      "record_id": "credit_b8e4b972aa"
+    }
+  ],
+  "bundle_id": "ptbundle_55292713e9"
+}

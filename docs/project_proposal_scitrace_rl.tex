@@ -25,17 +25,17 @@
 
 \section*{1. 具体目标}
 
-构建面向 AI4S Infra 的科学智能体执行账本，解决科学任务中“过程不可追踪、结论不可验证、失败经验不可复用”的问题。系统记录任务目标、工具调用、证据来源、产物哈希、验证结果和失败类型，产出 trace schema、验证器、15-case 评测集、Demo 报告、trace-to-reward 数据样本，以及对齐 W3C PROV、Workflow Run RO-Crate 和 OpenTelemetry span 的 provenance bundle。
+构建面向 AI4S Infra 的科学智能体执行账本，解决科学任务中“过程不可追踪、结论不可验证、失败经验不可复用”的问题。系统记录任务目标、工具调用、证据来源、产物哈希、验证结果和失败类型，产出 trace schema、验证器、15-case 评测集、Demo 报告、trace-to-reward 样本、后训练数据包，以及对齐 W3C PROV、Workflow Run RO-Crate 和 OpenTelemetry span 的 provenance bundle。
 
 \section*{2. 核心价值}
 
 Bohrium+SciMaster 指出，规模化科学工作流需要可观察、可复现、可治理的执行基础设施\cite{bohrium_scimaster}；CORE-Bench 和 MLR-Bench 也显示，研究智能体的主要风险是复现失败、虚构实验和无效结论\cite{corebench,mlrbench}。SciTrace-RL 的差异是反证优先：先验证系统能否识别伪造引用、错误机理、虚构计算和过度结论，再输出推荐。
 
-大模型部分聚焦后训练：将工具调用轨迹、验证分数和失败类型转化为 SFT、DPO/GRPO、Process Reward Model 和 tool-use policy 的训练数据，使科学智能体从真实执行反馈中改进规划、检索、工具调用和自我校验能力。
+大模型部分聚焦后训练：将工具调用轨迹、验证分数和失败类型转化为 SFT、DPO/GRPO、Process Reward Model、credit assignment 和 tool-router 数据，使科学智能体从真实执行反馈中改进规划、检索、工具调用和自我校验能力。
 
 \section*{3. 可行性简析}
 
-Demo 以锂电电解液添加剂筛选为例，已实现本地原型、DeepSeek 语义审查、15 个评测案例、trace-to-reward 输出和 provenance bundle。当前 80\% 案例可由规则验证器和大模型裁判自动处理；20\% 涉及高电压电芯选择、湿实验协议和多物理 tradeoff，明确升级到 Bohrium/Lebesgue 高保真计算、Uni-Lab-OS 实验或专家判断\cite{dp_about,unilabos}。
+Demo 以锂电电解液添加剂筛选为例，已实现本地原型、DeepSeek 语义审查、15 个评测案例、trace-to-reward、post-training bundle 和 provenance bundle。当前 80\% 案例可由规则验证器和大模型裁判自动处理；20\% 涉及高电压电芯选择、湿实验协议和多物理 tradeoff，明确升级到 Bohrium/Lebesgue 高保真计算、Uni-Lab-OS 实验或专家判断\cite{dp_about,unilabos}。
 
 \begin{thebibliography}{9}
 

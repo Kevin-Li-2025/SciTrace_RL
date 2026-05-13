@@ -1,0 +1,1029 @@
+{
+  "schema_version": "0.2",
+  "trace_id": "trace_051d451555",
+  "standards_alignment": [
+    {
+      "name": "W3C PROV",
+      "purpose": "Represent tasks, tool executions, validation actions, and artifacts as entities, activities, and agents.",
+      "url": "https://www.w3.org/TR/prov-overview/"
+    },
+    {
+      "name": "Workflow Run RO-Crate",
+      "purpose": "Package scientific workflow execution metadata and produced artifacts for FAIR reuse.",
+      "url": "https://www.researchobject.org/workflow-run-crate/"
+    },
+    {
+      "name": "OpenTelemetry GenAI semantic conventions",
+      "purpose": "Map agent and tool steps to spans that production observability systems can ingest.",
+      "url": "https://opentelemetry.io/docs/specs/semconv/gen-ai/gen-ai-agent-spans/"
+    }
+  ],
+  "ro_crate": {
+    "@context": "https://w3id.org/ro/crate/1.1/context",
+    "@graph": [
+      {
+        "@id": "ro-crate-metadata.json",
+        "@type": "CreativeWork",
+        "conformsTo": {
+          "@id": "https://w3id.org/ro/crate/1.1/context"
+        },
+        "about": {
+          "@id": "./"
+        }
+      },
+      {
+        "@id": "./",
+        "@type": "Dataset",
+        "name": "SciTrace-RL run trace_051d451555",
+        "description": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+        "conformsTo": [
+          {
+            "@id": "https://w3id.org/ro/wfrun/process/0.5"
+          }
+        ],
+        "hasPart": [
+          {
+            "@id": "#artifact/artifact_3403b2444a"
+          },
+          {
+            "@id": "#artifact/artifact_35ff7d754b"
+          },
+          {
+            "@id": "#artifact/artifact_240cee50d2"
+          },
+          {
+            "@id": "#artifact/artifact_1a5bdc5afb"
+          },
+          {
+            "@id": "#artifact/artifact_1a369816ac"
+          },
+          {
+            "@id": "#artifact/artifact_7a45b3e696"
+          },
+          {
+            "@id": "#artifact/artifact_96d3064bd6"
+          }
+        ],
+        "mainEntity": {
+          "@id": "#trace/trace_051d451555"
+        }
+      },
+      {
+        "@id": "#trace/trace_051d451555",
+        "@type": "Dataset",
+        "identifier": "trace_051d451555",
+        "name": "SciTrace-RL execution trace",
+        "dateCreated": "2026-05-13T22:11:18+00:00",
+        "about": {
+          "@id": "#task/battery_electrolyte_additive_screen_v1"
+        }
+      },
+      {
+        "@id": "#task/battery_electrolyte_additive_screen_v1",
+        "@type": "Thing",
+        "identifier": "battery_electrolyte_additive_screen_v1",
+        "name": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+        "additionalType": "materials_science.battery_electrolyte"
+      },
+      {
+        "@id": "#agent/scitrace-rl",
+        "@type": "SoftwareApplication",
+        "name": "SciTrace-RL",
+        "softwareVersion": "0.2"
+      },
+      {
+        "@id": "#artifact/artifact_3403b2444a",
+        "@type": "DigitalDocument",
+        "identifier": "artifact_3403b2444a",
+        "name": "retrieved_evidence",
+        "description": "6 retrieved sources for the task query.",
+        "contentUrl": "outputs/retrieved_sources.json",
+        "sha256": "3403b2444ab2e663ef53ddd33731ff9a39d6454dfdb2f1b2e19d706981026fc4",
+        "additionalType": "retrieved_evidence",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "source_ids",
+            "value": [
+              "fec_vc_reduction",
+              "electrolyte_additives_review",
+              "vc_rechargeable_review",
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "scimaster_xmaster"
+            ]
+          }
+        ]
+      },
+      {
+        "@id": "#artifact/artifact_35ff7d754b",
+        "@type": "DigitalDocument",
+        "identifier": "artifact_35ff7d754b",
+        "name": "ranked_candidates",
+        "description": "Candidate ranking with deterministic proxy chemistry features.",
+        "contentUrl": "outputs/ranked_candidates.json",
+        "sha256": "35ff7d754bc878daf5fbf1259f12da56fb38dc994edc832b8d8a2a665f3c2701",
+        "additionalType": "ranked_candidates",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "top_candidate_id",
+            "value": "FEC"
+          }
+        ]
+      },
+      {
+        "@id": "#artifact/artifact_240cee50d2",
+        "@type": "DigitalDocument",
+        "identifier": "artifact_240cee50d2",
+        "name": "agent_report",
+        "description": "Citation-grounded candidate report generated from trace artifacts.",
+        "contentUrl": "outputs/demo_report.md",
+        "sha256": "240cee50d283eb0851ad00360c8e184ca8335b4c6090b440bc34a250fb3f967c",
+        "additionalType": "agent_report",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "claim_count",
+            "value": 2
+          }
+        ]
+      },
+      {
+        "@id": "#artifact/artifact_1a5bdc5afb",
+        "@type": "DigitalDocument",
+        "identifier": "artifact_1a5bdc5afb",
+        "name": "validation_scorecard",
+        "description": "Machine-readable validation gates for the scientific-agent run.",
+        "contentUrl": "outputs/validation_scorecard.json",
+        "sha256": "1a5bdc5afb95b360f0853fe6a3fae21f2932f9d78eba4eaa9d6584f5baad939c",
+        "additionalType": "validation_scorecard",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "validation_names",
+            "value": [
+              "citation_integrity",
+              "artifact_replay",
+              "constraint_satisfaction",
+              "claim_evidence_alignment",
+              "claim_metadata_completeness",
+              "ai_claim_review"
+            ]
+          }
+        ]
+      },
+      {
+        "@id": "#artifact/artifact_1a369816ac",
+        "@type": "DigitalDocument",
+        "identifier": "artifact_1a369816ac",
+        "name": "trace_to_reward_sample",
+        "description": "Reward-labeled training sample derived from the validated execution trace.",
+        "contentUrl": "outputs/trace_to_reward_sample.json",
+        "sha256": "1a369816ac593307bb664130b62e1eccdf1ec45b3b22344a237e9adb9e090460",
+        "additionalType": "trace_to_reward_sample",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "reward",
+            "value": 0.97
+          }
+        ]
+      },
+      {
+        "@id": "#artifact/artifact_7a45b3e696",
+        "@type": "DigitalDocument",
+        "identifier": "artifact_7a45b3e696",
+        "name": "provenance_bundle",
+        "description": "Interoperability export aligned with W3C PROV, Workflow Run RO-Crate, and OpenTelemetry spans.",
+        "contentUrl": "outputs/provenance_bundle.json",
+        "sha256": "7a45b3e69697f2de5f2b76e0f419a59d0323b4d6665c426a3af1d764615a6093",
+        "additionalType": "provenance_bundle",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "profiles",
+            "value": [
+              "W3C PROV",
+              "Workflow Run RO-Crate",
+              "OpenTelemetry GenAI semantic conventions"
+            ]
+          }
+        ]
+      },
+      {
+        "@id": "#artifact/artifact_96d3064bd6",
+        "@type": "DigitalDocument",
+        "identifier": "artifact_96d3064bd6",
+        "name": "post_training_bundle",
+        "description": "SFT, DPO, process-reward, credit-assignment, and tool-router records derived from the run.",
+        "contentUrl": "outputs/post_training_bundle.json",
+        "sha256": "96d3064bd6aae0535ba68b0a12a208f95ff6e972cdcd72d3c6f74ef1354573b8",
+        "additionalType": "post_training_bundle",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "formats",
+            "value": [
+              "sft_chat_record",
+              "dpo_preference_pair",
+              "process_reward_steps",
+              "tool_router_records",
+              "credit_assignment"
+            ]
+          }
+        ]
+      },
+      {
+        "@id": "#tool/literature_search",
+        "@type": "SoftwareApplication",
+        "name": "literature_search"
+      },
+      {
+        "@id": "#tool-call/call_4905ffe7ea",
+        "@type": "CreateAction",
+        "name": "literature_search",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "instrument": {
+          "@id": "#tool/literature_search"
+        },
+        "object": {
+          "@id": "#task/battery_electrolyte_additive_screen_v1"
+        },
+        "result": [
+          {
+            "@id": "#artifact/artifact_3403b2444a"
+          }
+        ],
+        "startTime": "2026-05-13T22:11:18+00:00",
+        "endTime": "2026-05-13T22:11:18+00:00",
+        "actionStatus": "success",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "duration_ms",
+            "value": 0
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "input_hash",
+            "value": "1d332d378a60b45b7f5bf828c3af32a2869ca626acc2a970a4dab85b5de27195"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "output_hash",
+            "value": "814055f722919c1d988ec39ed5bc5ba9037c797701e394489681969f57370ec6"
+          }
+        ]
+      },
+      {
+        "@id": "#tool/molecule_screening",
+        "@type": "SoftwareApplication",
+        "name": "molecule_screening"
+      },
+      {
+        "@id": "#tool-call/call_b2022c85b7",
+        "@type": "CreateAction",
+        "name": "molecule_screening",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "instrument": {
+          "@id": "#tool/molecule_screening"
+        },
+        "object": {
+          "@id": "#task/battery_electrolyte_additive_screen_v1"
+        },
+        "result": [
+          {
+            "@id": "#artifact/artifact_35ff7d754b"
+          }
+        ],
+        "startTime": "2026-05-13T22:11:18+00:00",
+        "endTime": "2026-05-13T22:11:18+00:00",
+        "actionStatus": "success",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "duration_ms",
+            "value": 0
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "input_hash",
+            "value": "e98127e286f7b7ed41a5bb6f2069bf023d93a3df2882f6ae0a4dc5fb1f42e0fc"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "output_hash",
+            "value": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
+          }
+        ]
+      },
+      {
+        "@id": "#tool/report_writer",
+        "@type": "SoftwareApplication",
+        "name": "report_writer"
+      },
+      {
+        "@id": "#tool-call/call_4521db387b",
+        "@type": "CreateAction",
+        "name": "report_writer",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "instrument": {
+          "@id": "#tool/report_writer"
+        },
+        "object": {
+          "@id": "#task/battery_electrolyte_additive_screen_v1"
+        },
+        "result": [
+          {
+            "@id": "#artifact/artifact_240cee50d2"
+          }
+        ],
+        "startTime": "2026-05-13T22:11:18+00:00",
+        "endTime": "2026-05-13T22:11:18+00:00",
+        "actionStatus": "success",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "duration_ms",
+            "value": 0
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "input_hash",
+            "value": "cc6eb959a5b2d4d76c566da77273dca432075cb3952d2b744ecedbd47af9e67e"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "output_hash",
+            "value": "385666187c338aa14e0e9130168075094172d7fdbc0cf155afcc92a2682eaefb"
+          }
+        ]
+      },
+      {
+        "@id": "#validation/validation_4323602cf3",
+        "@type": "AssessAction",
+        "name": "citation_integrity",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "object": {
+          "@id": "#trace/trace_051d451555"
+        },
+        "actionStatus": "pass",
+        "result": {
+          "@type": "PropertyValue",
+          "name": "score",
+          "value": 1.0
+        },
+        "description": "All report citations resolve to retrieved evidence.",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "available",
+            "value": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ]
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "cited",
+            "value": [
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "vc_rechargeable_review"
+            ]
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "missing",
+            "value": []
+          }
+        ]
+      },
+      {
+        "@id": "#validation/validation_858bcdce31",
+        "@type": "AssessAction",
+        "name": "artifact_replay",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "object": {
+          "@id": "#trace/trace_051d451555"
+        },
+        "actionStatus": "pass",
+        "result": {
+          "@type": "PropertyValue",
+          "name": "score",
+          "value": 1.0
+        },
+        "description": "Screening output is deterministic and replayable.",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "original_hash",
+            "value": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "replay_hash",
+            "value": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
+          }
+        ]
+      },
+      {
+        "@id": "#validation/validation_f534f53950",
+        "@type": "AssessAction",
+        "name": "constraint_satisfaction",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "object": {
+          "@id": "#trace/trace_051d451555"
+        },
+        "actionStatus": "pass",
+        "result": {
+          "@type": "PropertyValue",
+          "name": "score",
+          "value": 1.0
+        },
+        "description": "Top candidate satisfies lightweight design constraints.",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "candidate_id",
+            "value": "FEC"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "constraints",
+            "value": {
+              "molecular_weight": {
+                "min": 60,
+                "max": 180
+              },
+              "minimum_screening_score": 0.75,
+              "required_validation_gates": [
+                "citation_integrity",
+                "artifact_replay",
+                "constraint_satisfaction",
+                "claim_evidence_alignment",
+                "claim_metadata_completeness"
+              ]
+            }
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "molecular_weight",
+            "value": 106.052
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "screening_score",
+            "value": 0.89
+          }
+        ]
+      },
+      {
+        "@id": "#validation/validation_7f4fe4d471",
+        "@type": "AssessAction",
+        "name": "claim_evidence_alignment",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "object": {
+          "@id": "#trace/trace_051d451555"
+        },
+        "actionStatus": "pass",
+        "result": {
+          "@type": "PropertyValue",
+          "name": "score",
+          "value": 1.0
+        },
+        "description": "The top-candidate claim is grounded in the ranked artifact.",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "claim_mentions_top",
+            "value": true
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "matching_claims",
+            "value": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "report_mentions_top",
+            "value": true
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "top_candidate",
+            "value": "FEC"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "top_candidate_name",
+            "value": "Fluoroethylene carbonate"
+          }
+        ]
+      },
+      {
+        "@id": "#validation/validation_b63c303089",
+        "@type": "AssessAction",
+        "name": "claim_metadata_completeness",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "object": {
+          "@id": "#trace/trace_051d451555"
+        },
+        "actionStatus": "pass",
+        "result": {
+          "@type": "PropertyValue",
+          "name": "score",
+          "value": 1.0
+        },
+        "description": "All claims include source ids and artifact keys.",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "claim_count",
+            "value": 2
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "missing_artifact_keys",
+            "value": []
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "missing_source_ids",
+            "value": []
+          }
+        ]
+      },
+      {
+        "@id": "#validation/validation_67f8129e07",
+        "@type": "AssessAction",
+        "name": "ai_claim_review",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "object": {
+          "@id": "#trace/trace_051d451555"
+        },
+        "actionStatus": "skip",
+        "result": {
+          "@type": "PropertyValue",
+          "name": "score",
+          "value": 1.0
+        },
+        "description": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "configured",
+            "value": false
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "model",
+            "value": null
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "provider",
+            "value": null
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "raw_response_hash",
+            "value": null
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "reviewed_claim_ids",
+            "value": []
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "unsupported_claim_ids",
+            "value": []
+          }
+        ]
+      }
+    ]
+  },
+  "prov": {
+    "prefix": {
+      "prov": "http://www.w3.org/ns/prov#",
+      "scitrace": "https://example.org/scitrace#"
+    },
+    "entity": {
+      "#trace/trace_051d451555": {
+        "prov:type": "scitrace:Trace",
+        "scitrace:task_id": "battery_electrolyte_additive_screen_v1",
+        "scitrace:domain": "materials_science.battery_electrolyte"
+      },
+      "#task/battery_electrolyte_additive_screen_v1": {
+        "prov:type": "scitrace:Task",
+        "scitrace:goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop."
+      },
+      "#artifact/artifact_3403b2444a": {
+        "prov:type": "scitrace:Artifact",
+        "scitrace:kind": "retrieved_evidence",
+        "scitrace:uri": "outputs/retrieved_sources.json",
+        "scitrace:sha256": "3403b2444ab2e663ef53ddd33731ff9a39d6454dfdb2f1b2e19d706981026fc4"
+      },
+      "#artifact/artifact_35ff7d754b": {
+        "prov:type": "scitrace:Artifact",
+        "scitrace:kind": "ranked_candidates",
+        "scitrace:uri": "outputs/ranked_candidates.json",
+        "scitrace:sha256": "35ff7d754bc878daf5fbf1259f12da56fb38dc994edc832b8d8a2a665f3c2701"
+      },
+      "#artifact/artifact_240cee50d2": {
+        "prov:type": "scitrace:Artifact",
+        "scitrace:kind": "agent_report",
+        "scitrace:uri": "outputs/demo_report.md",
+        "scitrace:sha256": "240cee50d283eb0851ad00360c8e184ca8335b4c6090b440bc34a250fb3f967c"
+      },
+      "#artifact/artifact_1a5bdc5afb": {
+        "prov:type": "scitrace:Artifact",
+        "scitrace:kind": "validation_scorecard",
+        "scitrace:uri": "outputs/validation_scorecard.json",
+        "scitrace:sha256": "1a5bdc5afb95b360f0853fe6a3fae21f2932f9d78eba4eaa9d6584f5baad939c"
+      },
+      "#artifact/artifact_1a369816ac": {
+        "prov:type": "scitrace:Artifact",
+        "scitrace:kind": "trace_to_reward_sample",
+        "scitrace:uri": "outputs/trace_to_reward_sample.json",
+        "scitrace:sha256": "1a369816ac593307bb664130b62e1eccdf1ec45b3b22344a237e9adb9e090460"
+      },
+      "#artifact/artifact_7a45b3e696": {
+        "prov:type": "scitrace:Artifact",
+        "scitrace:kind": "provenance_bundle",
+        "scitrace:uri": "outputs/provenance_bundle.json",
+        "scitrace:sha256": "7a45b3e69697f2de5f2b76e0f419a59d0323b4d6665c426a3af1d764615a6093"
+      },
+      "#artifact/artifact_96d3064bd6": {
+        "prov:type": "scitrace:Artifact",
+        "scitrace:kind": "post_training_bundle",
+        "scitrace:uri": "outputs/post_training_bundle.json",
+        "scitrace:sha256": "96d3064bd6aae0535ba68b0a12a208f95ff6e972cdcd72d3c6f74ef1354573b8"
+      }
+    },
+    "activity": {
+      "#tool-call/call_4905ffe7ea": {
+        "prov:type": "scitrace:ToolCall",
+        "prov:startedAtTime": "2026-05-13T22:11:18+00:00",
+        "prov:endedAtTime": "2026-05-13T22:11:18+00:00",
+        "scitrace:tool": "literature_search",
+        "scitrace:status": "success",
+        "scitrace:output_hash": "814055f722919c1d988ec39ed5bc5ba9037c797701e394489681969f57370ec6"
+      },
+      "#tool-call/call_b2022c85b7": {
+        "prov:type": "scitrace:ToolCall",
+        "prov:startedAtTime": "2026-05-13T22:11:18+00:00",
+        "prov:endedAtTime": "2026-05-13T22:11:18+00:00",
+        "scitrace:tool": "molecule_screening",
+        "scitrace:status": "success",
+        "scitrace:output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
+      },
+      "#tool-call/call_4521db387b": {
+        "prov:type": "scitrace:ToolCall",
+        "prov:startedAtTime": "2026-05-13T22:11:18+00:00",
+        "prov:endedAtTime": "2026-05-13T22:11:18+00:00",
+        "scitrace:tool": "report_writer",
+        "scitrace:status": "success",
+        "scitrace:output_hash": "385666187c338aa14e0e9130168075094172d7fdbc0cf155afcc92a2682eaefb"
+      },
+      "#validation/validation_4323602cf3": {
+        "prov:type": "scitrace:ValidationGate",
+        "scitrace:status": "pass",
+        "scitrace:score": 1.0,
+        "scitrace:message": "All report citations resolve to retrieved evidence."
+      },
+      "#validation/validation_858bcdce31": {
+        "prov:type": "scitrace:ValidationGate",
+        "scitrace:status": "pass",
+        "scitrace:score": 1.0,
+        "scitrace:message": "Screening output is deterministic and replayable."
+      },
+      "#validation/validation_f534f53950": {
+        "prov:type": "scitrace:ValidationGate",
+        "scitrace:status": "pass",
+        "scitrace:score": 1.0,
+        "scitrace:message": "Top candidate satisfies lightweight design constraints."
+      },
+      "#validation/validation_7f4fe4d471": {
+        "prov:type": "scitrace:ValidationGate",
+        "scitrace:status": "pass",
+        "scitrace:score": 1.0,
+        "scitrace:message": "The top-candidate claim is grounded in the ranked artifact."
+      },
+      "#validation/validation_b63c303089": {
+        "prov:type": "scitrace:ValidationGate",
+        "scitrace:status": "pass",
+        "scitrace:score": 1.0,
+        "scitrace:message": "All claims include source ids and artifact keys."
+      },
+      "#validation/validation_67f8129e07": {
+        "prov:type": "scitrace:ValidationGate",
+        "scitrace:status": "skip",
+        "scitrace:score": 1.0,
+        "scitrace:message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable."
+      }
+    },
+    "agent": {
+      "#agent/scitrace-rl": {
+        "prov:type": "prov:SoftwareAgent",
+        "prov:label": "SciTrace-RL"
+      }
+    },
+    "used": [
+      {
+        "prov:activity": "#tool-call/call_4905ffe7ea",
+        "prov:entity": "#task/battery_electrolyte_additive_screen_v1"
+      },
+      {
+        "prov:activity": "#tool-call/call_b2022c85b7",
+        "prov:entity": "#task/battery_electrolyte_additive_screen_v1"
+      },
+      {
+        "prov:activity": "#tool-call/call_4521db387b",
+        "prov:entity": "#task/battery_electrolyte_additive_screen_v1"
+      },
+      {
+        "prov:activity": "#validation/validation_4323602cf3",
+        "prov:entity": "#trace/trace_051d451555"
+      },
+      {
+        "prov:activity": "#validation/validation_858bcdce31",
+        "prov:entity": "#trace/trace_051d451555"
+      },
+      {
+        "prov:activity": "#validation/validation_f534f53950",
+        "prov:entity": "#trace/trace_051d451555"
+      },
+      {
+        "prov:activity": "#validation/validation_7f4fe4d471",
+        "prov:entity": "#trace/trace_051d451555"
+      },
+      {
+        "prov:activity": "#validation/validation_b63c303089",
+        "prov:entity": "#trace/trace_051d451555"
+      },
+      {
+        "prov:activity": "#validation/validation_67f8129e07",
+        "prov:entity": "#trace/trace_051d451555"
+      }
+    ],
+    "wasGeneratedBy": [
+      {
+        "prov:entity": "#artifact/artifact_3403b2444a",
+        "prov:activity": "#tool-call/call_4905ffe7ea"
+      },
+      {
+        "prov:entity": "#artifact/artifact_35ff7d754b",
+        "prov:activity": "#tool-call/call_b2022c85b7"
+      },
+      {
+        "prov:entity": "#artifact/artifact_240cee50d2",
+        "prov:activity": "#tool-call/call_4521db387b"
+      }
+    ],
+    "wasAssociatedWith": [
+      {
+        "prov:activity": "#tool-call/call_4905ffe7ea",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
+        "prov:activity": "#tool-call/call_b2022c85b7",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
+        "prov:activity": "#tool-call/call_4521db387b",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
+        "prov:activity": "#validation/validation_4323602cf3",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
+        "prov:activity": "#validation/validation_858bcdce31",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
+        "prov:activity": "#validation/validation_f534f53950",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
+        "prov:activity": "#validation/validation_7f4fe4d471",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
+        "prov:activity": "#validation/validation_b63c303089",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
+        "prov:activity": "#validation/validation_67f8129e07",
+        "prov:agent": "#agent/scitrace-rl"
+      }
+    ]
+  },
+  "otel": {
+    "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+    "spans": [
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "b0ff38413a1cce5f",
+        "parent_span_id": null,
+        "name": "scitrace.workflow",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "gen_ai.operation.name": "invoke_agent",
+          "scitrace.trace_id": "trace_051d451555",
+          "scitrace.task_id": "battery_electrolyte_additive_screen_v1",
+          "scitrace.domain": "materials_science.battery_electrolyte",
+          "scitrace.reward": 0.97
+        }
+      },
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "e72720ea71758361",
+        "parent_span_id": "b0ff38413a1cce5f",
+        "name": "execute_tool literature_search",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "gen_ai.operation.name": "execute_tool",
+          "gen_ai.tool.name": "literature_search",
+          "scitrace.call_id": "call_4905ffe7ea",
+          "scitrace.status": "success",
+          "scitrace.duration_ms": 0,
+          "scitrace.input_hash": "1d332d378a60b45b7f5bf828c3af32a2869ca626acc2a970a4dab85b5de27195",
+          "scitrace.output_hash": "814055f722919c1d988ec39ed5bc5ba9037c797701e394489681969f57370ec6",
+          "scitrace.artifact_ids": "artifact_3403b2444a"
+        }
+      },
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "9ab27a3f46ee8fea",
+        "parent_span_id": "b0ff38413a1cce5f",
+        "name": "execute_tool molecule_screening",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "gen_ai.operation.name": "execute_tool",
+          "gen_ai.tool.name": "molecule_screening",
+          "scitrace.call_id": "call_b2022c85b7",
+          "scitrace.status": "success",
+          "scitrace.duration_ms": 0,
+          "scitrace.input_hash": "e98127e286f7b7ed41a5bb6f2069bf023d93a3df2882f6ae0a4dc5fb1f42e0fc",
+          "scitrace.output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c",
+          "scitrace.artifact_ids": "artifact_35ff7d754b"
+        }
+      },
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "e84046cd430048c5",
+        "parent_span_id": "b0ff38413a1cce5f",
+        "name": "execute_tool report_writer",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "gen_ai.operation.name": "execute_tool",
+          "gen_ai.tool.name": "report_writer",
+          "scitrace.call_id": "call_4521db387b",
+          "scitrace.status": "success",
+          "scitrace.duration_ms": 0,
+          "scitrace.input_hash": "cc6eb959a5b2d4d76c566da77273dca432075cb3952d2b744ecedbd47af9e67e",
+          "scitrace.output_hash": "385666187c338aa14e0e9130168075094172d7fdbc0cf155afcc92a2682eaefb",
+          "scitrace.artifact_ids": "artifact_240cee50d2"
+        }
+      },
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "4db561992c9990dc",
+        "parent_span_id": "b0ff38413a1cce5f",
+        "name": "validate citation_integrity",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "scitrace.operation.name": "validation_gate",
+          "scitrace.validation.name": "citation_integrity",
+          "scitrace.status": "pass",
+          "scitrace.score": 1.0
+        }
+      },
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "5e6dec3a796b125a",
+        "parent_span_id": "b0ff38413a1cce5f",
+        "name": "validate artifact_replay",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "scitrace.operation.name": "validation_gate",
+          "scitrace.validation.name": "artifact_replay",
+          "scitrace.status": "pass",
+          "scitrace.score": 1.0
+        }
+      },
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "4426688ba1333189",
+        "parent_span_id": "b0ff38413a1cce5f",
+        "name": "validate constraint_satisfaction",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "scitrace.operation.name": "validation_gate",
+          "scitrace.validation.name": "constraint_satisfaction",
+          "scitrace.status": "pass",
+          "scitrace.score": 1.0
+        }
+      },
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "f9a195ded253267e",
+        "parent_span_id": "b0ff38413a1cce5f",
+        "name": "validate claim_evidence_alignment",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "scitrace.operation.name": "validation_gate",
+          "scitrace.validation.name": "claim_evidence_alignment",
+          "scitrace.status": "pass",
+          "scitrace.score": 1.0
+        }
+      },
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "5e2e4053a3dc3356",
+        "parent_span_id": "b0ff38413a1cce5f",
+        "name": "validate claim_metadata_completeness",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "scitrace.operation.name": "validation_gate",
+          "scitrace.validation.name": "claim_metadata_completeness",
+          "scitrace.status": "pass",
+          "scitrace.score": 1.0
+        }
+      },
+      {
+        "trace_id": "b0ff38413a1cce5f8db983bf8c1dc941",
+        "span_id": "0393a59aa396bd21",
+        "parent_span_id": "b0ff38413a1cce5f",
+        "name": "validate ai_claim_review",
+        "kind": "internal",
+        "start_time": "2026-05-13T22:11:18+00:00",
+        "end_time": "2026-05-13T22:11:18+00:00",
+        "attributes": {
+          "scitrace.operation.name": "validation_gate",
+          "scitrace.validation.name": "ai_claim_review",
+          "scitrace.status": "skip",
+          "scitrace.score": 1.0
+        }
+      }
+    ]
+  }
+}

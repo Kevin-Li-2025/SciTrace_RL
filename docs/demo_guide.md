@@ -13,6 +13,7 @@ Submit the repository or a compressed folder containing:
 - `outputs/demo_report.md`
 - `outputs/validation_scorecard.json`
 - `outputs/trace_to_reward_sample.json`
+- `outputs/post_training_bundle.json`
 - `outputs/provenance_bundle.json`
 
 ## How To Run
@@ -60,8 +61,9 @@ With DeepSeek enabled, the same command produces a model-backed semantic validat
 3. The report is grounded in retrieved source ids and every citation is checked.
 4. The candidate ranking is replayable; the same inputs produce the same output hash.
 5. The reward sample shows how execution traces can become training data.
-6. The provenance bundle shows how the same run can be mapped to W3C PROV, Workflow Run RO-Crate, and OpenTelemetry-style spans.
-7. The optional `ai_claim_review` gate shows how a real AI API can be used as an extra semantic judge without making the demo fragile.
+6. The post-training bundle makes that training data concrete: SFT, DPO, process rewards, credit assignment, and tool-router examples.
+7. The provenance bundle shows how the same run can be mapped to W3C PROV, Workflow Run RO-Crate, and OpenTelemetry-style spans.
+8. The optional `ai_claim_review` gate shows how a real AI API can be used as an extra semantic judge without making the demo fragile.
 
 ## Demo Scenario
 
@@ -86,6 +88,7 @@ The default run recommends fluoroethylene carbonate as the top candidate and pro
 - `outputs/demo_dashboard.html` as a visual scorecard
 - `outputs/validation_scorecard.json` as machine-readable validation output
 - `outputs/trace_to_reward_sample.json` as training-ready feedback data
+- `outputs/post_training_bundle.json` as concrete post-training records
 - `outputs/provenance_bundle.json` as standards-aware provenance and observability output
 - `outputs/eval/eval_report.md` as the offline adversarial validation report
 - `outputs/eval_deepseek_v7/eval_report.md` as the latest real DeepSeek-backed validation report
@@ -94,4 +97,4 @@ The default run recommends fluoroethylene carbonate as the top candidate and pro
 
 Use this short version:
 
-> This demo targets the production bottleneck of scientific agents: not whether an agent can produce a plausible answer, but whether its workflow can be traced, replayed, validated, exported as provenance, and converted into feedback for future improvement. I implemented a small dry-lab workflow for electrolyte additive screening. The scientific model is intentionally lightweight, but the infrastructure is the point: each tool call has structured inputs and outputs, each artifact is hashed, claims are checked against evidence, the run is replayed, and the final validation score becomes a reward label for future agent training.
+> This demo targets the production bottleneck of scientific agents: not whether an agent can produce a plausible answer, but whether its workflow can be traced, replayed, validated, exported as provenance, and converted into post-training data. I implemented a small dry-lab workflow for electrolyte additive screening. The scientific model is intentionally lightweight, but the infrastructure is the point: each tool call has structured inputs and outputs, each artifact is hashed, claims are checked against evidence, the run is replayed, and the final validation score becomes SFT, DPO, process-reward, credit-assignment, and tool-router records.

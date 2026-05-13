@@ -34,12 +34,18 @@ class RunnerTests(unittest.TestCase):
             self.assertTrue((out / "demo_trace.json").exists())
             self.assertTrue((out / "trace_to_reward_sample.json").exists())
             self.assertTrue((out / "provenance_bundle.json").exists())
+            self.assertTrue((out / "post_training_bundle.json").exists())
             provenance = read_json(out / "provenance_bundle.json")
             self.assertEqual(provenance["trace_id"], trace["trace_id"])
             self.assertIn("ro_crate", provenance)
             self.assertIn("prov", provenance)
             self.assertIn("otel", provenance)
             self.assertGreaterEqual(len(provenance["otel"]["spans"]), 1 + trace["metrics"]["total_tool_calls"])
+            post_training = read_json(out / "post_training_bundle.json")
+            self.assertIn("sft_chat_record", post_training["formats"])
+            self.assertIn("dpo_preference_pair", post_training["formats"])
+            self.assertEqual(len(post_training["process_reward_steps"]), trace["metrics"]["total_tool_calls"])
+            self.assertEqual(len(post_training["tool_router_records"]), trace["metrics"]["total_tool_calls"])
             required = {
                 "citation_integrity",
                 "artifact_replay",

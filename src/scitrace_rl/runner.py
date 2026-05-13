@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from .dashboard import render_dashboard
+from .learning_signal import build_post_training_bundle
 from .provenance import build_provenance_bundle
 from .schema import Artifact, Trace
 from .tools import LiteratureSearchTool, MoleculeScreeningTool, ReportWriterTool
@@ -125,6 +126,22 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
             },
         )
     )
+    post_training_artifact = trace.add_artifact(
+        Artifact(
+            kind="post_training_bundle",
+            uri=str(output_dir / "post_training_bundle.json"),
+            summary="SFT, DPO, process-reward, credit-assignment, and tool-router records derived from the run.",
+            metadata={
+                "formats": [
+                    "sft_chat_record",
+                    "dpo_preference_pair",
+                    "process_reward_steps",
+                    "tool_router_records",
+                    "credit_assignment",
+                ]
+            },
+        )
+    )
 
     trace.metrics = {
         "total_tool_calls": len(trace.tools),
@@ -141,6 +158,7 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
     write_json(output_dir / "validation_scorecard.json", [validation.__dict__ for validation in trace.validations])
     write_json(output_dir / "demo_trace.json", trace_dict)
     write_json(output_dir / "provenance_bundle.json", build_provenance_bundle(trace_dict))
+    write_json(output_dir / "post_training_bundle.json", build_post_training_bundle(trace_dict, task, report.result, screening.result))
     render_dashboard(trace_dict, report.result["markdown"], output_dir / "demo_dashboard.html")
     write_json(
         output_dir / "trace_to_reward_sample.json",
@@ -162,6 +180,7 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
                 validation_artifact.artifact_id,
                 reward_artifact.artifact_id,
                 provenance_artifact.artifact_id,
+                post_training_artifact.artifact_id,
             ],
         },
     )

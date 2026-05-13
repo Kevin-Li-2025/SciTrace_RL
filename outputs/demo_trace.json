@@ -2,8 +2,8 @@
   "task_id": "battery_electrolyte_additive_screen_v1",
   "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
   "domain": "materials_science.battery_electrolyte",
-  "created_at": "2026-05-13T20:14:04+00:00",
-  "trace_id": "trace_781970df53",
+  "created_at": "2026-05-13T22:11:18+00:00",
+  "trace_id": "trace_051d451555",
   "tools": [
     {
       "name": "literature_search",
@@ -140,8 +140,8 @@
         }
       },
       "status": "success",
-      "started_at": "2026-05-13T20:14:04+00:00",
-      "ended_at": "2026-05-13T20:14:04+00:00",
+      "started_at": "2026-05-13T22:11:18+00:00",
+      "ended_at": "2026-05-13T22:11:18+00:00",
       "duration_ms": 0,
       "artifacts": [
         "artifact_3403b2444a"
@@ -342,8 +342,8 @@
         }
       },
       "status": "success",
-      "started_at": "2026-05-13T20:14:04+00:00",
-      "ended_at": "2026-05-13T20:14:04+00:00",
+      "started_at": "2026-05-13T22:11:18+00:00",
+      "ended_at": "2026-05-13T22:11:18+00:00",
       "duration_ms": 0,
       "artifacts": [
         "artifact_35ff7d754b"
@@ -683,8 +683,8 @@
         ]
       },
       "status": "success",
-      "started_at": "2026-05-13T20:14:04+00:00",
-      "ended_at": "2026-05-13T20:14:04+00:00",
+      "started_at": "2026-05-13T22:11:18+00:00",
+      "ended_at": "2026-05-13T22:11:18+00:00",
       "duration_ms": 0,
       "artifacts": [
         "artifact_240cee50d2"
@@ -757,6 +757,36 @@
       },
       "artifact_id": "artifact_1a369816ac",
       "sha256": "1a369816ac593307bb664130b62e1eccdf1ec45b3b22344a237e9adb9e090460"
+    },
+    {
+      "kind": "provenance_bundle",
+      "uri": "outputs/provenance_bundle.json",
+      "summary": "Interoperability export aligned with W3C PROV, Workflow Run RO-Crate, and OpenTelemetry spans.",
+      "metadata": {
+        "profiles": [
+          "W3C PROV",
+          "Workflow Run RO-Crate",
+          "OpenTelemetry GenAI semantic conventions"
+        ]
+      },
+      "artifact_id": "artifact_7a45b3e696",
+      "sha256": "7a45b3e69697f2de5f2b76e0f419a59d0323b4d6665c426a3af1d764615a6093"
+    },
+    {
+      "kind": "post_training_bundle",
+      "uri": "outputs/post_training_bundle.json",
+      "summary": "SFT, DPO, process-reward, credit-assignment, and tool-router records derived from the run.",
+      "metadata": {
+        "formats": [
+          "sft_chat_record",
+          "dpo_preference_pair",
+          "process_reward_steps",
+          "tool_router_records",
+          "credit_assignment"
+        ]
+      },
+      "artifact_id": "artifact_96d3064bd6",
+      "sha256": "96d3064bd6aae0535ba68b0a12a208f95ff6e972cdcd72d3c6f74ef1354573b8"
     }
   ],
   "validations": [
@@ -879,7 +909,7 @@
   "metrics": {
     "total_tool_calls": 3,
     "successful_tool_calls": 3,
-    "artifact_count": 5,
+    "artifact_count": 7,
     "validation_count": 6,
     "screening_output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
   },

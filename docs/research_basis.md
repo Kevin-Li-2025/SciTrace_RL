@@ -54,6 +54,17 @@ This project direction is grounded in public signals from DP Technology and the 
   - https://www.researchobject.org/workflow-run-crate/
   - https://opentelemetry.io/docs/specs/semconv/gen-ai/gen-ai-agent-spans/
 
+## Agent Post-Training From Execution Traces
+
+- Agent Lightning argues for decoupling agent execution from reinforcement learning through a unified trace interface and credit assignment over trajectories.
+- AgentPRM frames process reward models as a scalable way for LLM agents to improve through interaction, with step-level reward shaping as a core issue.
+- RLFactory targets multi-turn tool use with a decoupled tool/training architecture and a reward layer that combines rule, model-judge, and tool-verification signals.
+- SciTrace-RL now exports `post_training_bundle.json`, turning one validated scientific run into SFT, DPO, process-reward, credit-assignment, and tool-router records.
+- Sources:
+  - https://arxiv.org/abs/2508.03680
+  - https://arxiv.org/abs/2502.10325
+  - https://arxiv.org/abs/2509.06980
+
 ## DeepSeek API Validation Layer
 
 - DeepSeek's official API documentation states that its API is OpenAI-compatible.
