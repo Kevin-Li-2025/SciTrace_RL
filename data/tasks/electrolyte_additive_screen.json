@@ -1,0 +1,61 @@
+{
+  "task_id": "battery_electrolyte_additive_screen_v1",
+  "domain": "materials_science.battery_electrolyte",
+  "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+  "retrieval_query": "lithium battery electrolyte additive SEI fluorinated carbonate vinylene carbonate agentic science trace validation",
+  "top_k_sources": 6,
+  "constraints": {
+    "molecular_weight": {
+      "min": 60,
+      "max": 180
+    },
+    "minimum_screening_score": 0.75,
+    "required_validation_gates": [
+      "citation_integrity",
+      "artifact_replay",
+      "constraint_satisfaction",
+      "claim_evidence_alignment",
+      "claim_metadata_completeness"
+    ]
+  },
+  "candidates": [
+    {
+      "candidate_id": "FEC",
+      "name": "Fluoroethylene carbonate",
+      "formula": "C3H3FO3",
+      "role_hypothesis": "Fluorinated carbonate additive that can contribute fluorine-containing SEI species and improve interphase formation.",
+      "evidence_source_ids": [
+        "fec_vc_reduction",
+        "electrolyte_additives_review"
+      ],
+      "risk_flags": []
+    },
+    {
+      "candidate_id": "VC",
+      "name": "Vinylene carbonate",
+      "formula": "C3H2O3",
+      "role_hypothesis": "Classic film-forming additive for graphite-anode SEI formation.",
+      "evidence_source_ids": [
+        "fec_vc_reduction",
+        "vc_rechargeable_review",
+        "electrolyte_additives_review"
+      ],
+      "risk_flags": [
+        "reactivity_tradeoff"
+      ]
+    },
+    {
+      "candidate_id": "DTD",
+      "name": "1,3,2-Dioxathiolane-2,2-dioxide",
+      "formula": "C2H4O4S",
+      "role_hypothesis": "Sulfur-containing additive proxy for testing whether heteroatom-rich additives are prioritized by the traceable screening workflow.",
+      "evidence_source_ids": [
+        "electrolyte_additives_review",
+        "battery_safety_additives"
+      ],
+      "risk_flags": [
+        "needs_domain_expert_review"
+      ]
+    }
+  ]
+}

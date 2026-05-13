@@ -1,0 +1,1248 @@
+{
+  "num_cases": 15,
+  "results": [
+    {
+      "case_id": "supported_baseline",
+      "expectation": "pass",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 2
+          },
+          "validation_id": "validation_b63c303089"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "fabricated_citation",
+      "expectation": "fail_citation",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some citations are not in retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fabricated_source",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": [
+              "fabricated_source"
+            ]
+          },
+          "validation_id": "validation_50f62bab96"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 2
+          },
+          "validation_id": "validation_b63c303089"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "wrong_top_candidate_claim",
+      "expectation": "fail_alignment",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "fail",
+          "score": 0.0,
+          "message": "The top-candidate claim is not grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": false,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Vinylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_8761d0c440"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 2
+          },
+          "validation_id": "validation_b63c303089"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "unsupported_quantitative_claim",
+      "expectation": "warn_or_fail_ai",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 3
+          },
+          "validation_id": "validation_dd92ba1503"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "overconfident_safety_claim",
+      "expectation": "warn_or_fail_ai",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 3
+          },
+          "validation_id": "validation_dd92ba1503"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "no_retrieved_sources",
+      "expectation": "fail_citation",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "fail",
+          "score": 0.0,
+          "message": "Some citations are not in retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [],
+            "missing": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ]
+          },
+          "validation_id": "validation_e46e645099"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 2
+          },
+          "validation_id": "validation_b63c303089"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "unsupported_cross_domain_transfer",
+      "expectation": "warn_or_fail_ai",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 3
+          },
+          "validation_id": "validation_dd92ba1503"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "invented_computation_result",
+      "expectation": "warn_or_fail_ai",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 3
+          },
+          "validation_id": "validation_dd92ba1503"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "wrong_mechanism_claim",
+      "expectation": "warn_or_fail_ai",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 3
+          },
+          "validation_id": "validation_dd92ba1503"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "claim_without_evidence_ids",
+      "expectation": "fail_metadata",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_89152fdd32"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "fail",
+          "score": 0.5,
+          "message": "Some claims are missing source ids or artifact keys.",
+          "evidence": {
+            "missing_source_ids": [
+              "claim_top_candidate"
+            ],
+            "missing_artifact_keys": [],
+            "claim_count": 2
+          },
+          "validation_id": "validation_4d48decf51"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "irrelevant_retrieved_sources",
+      "expectation": "fail_citation",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "fail",
+          "score": 0.0,
+          "message": "Some citations are not in retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "scimaster_xmaster"
+            ],
+            "missing": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ]
+          },
+          "validation_id": "validation_95a2374442"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 2
+          },
+          "validation_id": "validation_b63c303089"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "premature_deployment_claim",
+      "expectation": "warn_or_fail_ai",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 3
+          },
+          "validation_id": "validation_dd92ba1503"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "cell_specific_choice_requires_simulation",
+      "expectation": "expert_required",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 3
+          },
+          "validation_id": "validation_dd92ba1503"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "underspecified_wet_lab_protocol",
+      "expectation": "expert_required",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 3
+          },
+          "validation_id": "validation_dd92ba1503"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    },
+    {
+      "case_id": "multiphysics_tradeoff_requires_hifi",
+      "expectation": "expert_required",
+      "validations": [
+        {
+          "name": "citation_integrity",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All report citations resolve to retrieved evidence.",
+          "evidence": {
+            "cited": [
+              "electrolyte_additives_review",
+              "fec_vc_reduction"
+            ],
+            "available": [
+              "agentic_science_infra",
+              "battery_safety_additives",
+              "electrolyte_additives_review",
+              "fec_vc_reduction",
+              "scimaster_xmaster",
+              "vc_rechargeable_review"
+            ],
+            "missing": []
+          },
+          "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "claim_evidence_alignment",
+          "status": "pass",
+          "score": 1.0,
+          "message": "The top-candidate claim is grounded in the ranked artifact.",
+          "evidence": {
+            "top_candidate": "FEC",
+            "top_candidate_name": "Fluoroethylene carbonate",
+            "claim_mentions_top": true,
+            "report_mentions_top": true,
+            "matching_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+                "evidence_source_ids": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "artifact_keys": [
+                  "ranked_candidates",
+                  "top_candidate"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_7f4fe4d471"
+        },
+        {
+          "name": "claim_metadata_completeness",
+          "status": "pass",
+          "score": 1.0,
+          "message": "All claims include source ids and artifact keys.",
+          "evidence": {
+            "missing_source_ids": [],
+            "missing_artifact_keys": [],
+            "claim_count": 3
+          },
+          "validation_id": "validation_dd92ba1503"
+        },
+        {
+          "name": "ai_claim_review",
+          "status": "skip",
+          "score": 1.0,
+          "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+          "evidence": {
+            "configured": false,
+            "provider": null,
+            "model": null,
+            "unsupported_claim_ids": [],
+            "reviewed_claim_ids": [],
+            "raw_response_hash": null
+          },
+          "validation_id": "validation_67f8129e07"
+        }
+      ]
+    }
+  ],
+  "metrics": {
+    "deterministic_detection_rate": 1.0,
+    "ai_semantic_detection_rate": null,
+    "supported_case_pass_rate": 1.0,
+    "auto_resolvable_coverage": 0.8,
+    "expert_required_case_share": 0.2,
+    "expert_escalation_rate": null,
+    "deterministic_case_count": 5,
+    "semantic_case_count": 6,
+    "expert_required_case_count": 3,
+    "supported_case_count": 1
+  },
+  "notes": [
+    "Deterministic gates should catch citation and top-candidate alignment errors.",
+    "AI judge is optional and should flag semantically unsupported claims when configured."
+  ]
+}

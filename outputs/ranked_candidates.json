@@ -1,0 +1,134 @@
+{
+  "ranked_candidates": [
+    {
+      "candidate_id": "FEC",
+      "name": "Fluoroethylene carbonate",
+      "formula": "C3H3FO3",
+      "role_hypothesis": "Fluorinated carbonate additive that can contribute fluorine-containing SEI species and improve interphase formation.",
+      "evidence_source_ids": [
+        "fec_vc_reduction",
+        "electrolyte_additives_review"
+      ],
+      "risk_flags": [],
+      "computed": {
+        "atoms": {
+          "C": 3,
+          "H": 3,
+          "F": 1,
+          "O": 3
+        },
+        "molecular_weight": 106.052,
+        "hetero_atom_count": 4
+      },
+      "screening_score": 0.89,
+      "score_rationale": [
+        "literature support",
+        "hetero atoms can participate in interphase chemistry",
+        "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+        "penalize candidates outside molecular-weight or safety constraints"
+      ]
+    },
+    {
+      "candidate_id": "DTD",
+      "name": "1,3,2-Dioxathiolane-2,2-dioxide",
+      "formula": "C2H4O4S",
+      "role_hypothesis": "Sulfur-containing additive proxy for testing whether heteroatom-rich additives are prioritized by the traceable screening workflow.",
+      "evidence_source_ids": [
+        "electrolyte_additives_review",
+        "battery_safety_additives"
+      ],
+      "risk_flags": [
+        "needs_domain_expert_review"
+      ],
+      "computed": {
+        "atoms": {
+          "C": 2,
+          "H": 4,
+          "O": 4,
+          "S": 1
+        },
+        "molecular_weight": 124.11,
+        "hetero_atom_count": 5
+      },
+      "screening_score": 0.76,
+      "score_rationale": [
+        "literature support",
+        "hetero atoms can participate in interphase chemistry",
+        "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+        "penalize candidates outside molecular-weight or safety constraints"
+      ]
+    },
+    {
+      "candidate_id": "VC",
+      "name": "Vinylene carbonate",
+      "formula": "C3H2O3",
+      "role_hypothesis": "Classic film-forming additive for graphite-anode SEI formation.",
+      "evidence_source_ids": [
+        "fec_vc_reduction",
+        "vc_rechargeable_review",
+        "electrolyte_additives_review"
+      ],
+      "risk_flags": [
+        "reactivity_tradeoff"
+      ],
+      "computed": {
+        "atoms": {
+          "C": 3,
+          "H": 2,
+          "O": 3
+        },
+        "molecular_weight": 86.046,
+        "hetero_atom_count": 3
+      },
+      "screening_score": 0.71,
+      "score_rationale": [
+        "literature support",
+        "hetero atoms can participate in interphase chemistry",
+        "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+        "penalize candidates outside molecular-weight or safety constraints"
+      ]
+    }
+  ],
+  "top_candidate": {
+    "candidate_id": "FEC",
+    "name": "Fluoroethylene carbonate",
+    "formula": "C3H3FO3",
+    "role_hypothesis": "Fluorinated carbonate additive that can contribute fluorine-containing SEI species and improve interphase formation.",
+    "evidence_source_ids": [
+      "fec_vc_reduction",
+      "electrolyte_additives_review"
+    ],
+    "risk_flags": [],
+    "computed": {
+      "atoms": {
+        "C": 3,
+        "H": 3,
+        "F": 1,
+        "O": 3
+      },
+      "molecular_weight": 106.052,
+      "hetero_atom_count": 4
+    },
+    "screening_score": 0.89,
+    "score_rationale": [
+      "literature support",
+      "hetero atoms can participate in interphase chemistry",
+      "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+      "penalize candidates outside molecular-weight or safety constraints"
+    ]
+  },
+  "constraints": {
+    "molecular_weight": {
+      "min": 60,
+      "max": 180
+    },
+    "minimum_screening_score": 0.75,
+    "required_validation_gates": [
+      "citation_integrity",
+      "artifact_replay",
+      "constraint_satisfaction",
+      "claim_evidence_alignment",
+      "claim_metadata_completeness"
+    ]
+  }
+}

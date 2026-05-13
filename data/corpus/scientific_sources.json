@@ -1,0 +1,116 @@
+[
+  {
+    "source_id": "agentic_science_infra",
+    "title": "Bohrium + SciMaster: Building the Infrastructure and Ecosystem for Agentic Science at Scale",
+    "url": "https://arxiv.org/abs/2512.20469",
+    "year": 2025,
+    "source_type": "arxiv_preprint",
+    "keywords": [
+      "agentic science",
+      "trace",
+      "validation",
+      "Bohrium",
+      "SciMaster",
+      "workflow",
+      "infrastructure"
+    ],
+    "summary": "Argues that scalable scientific agents require agent-ready infrastructure, stable tool interfaces, execution traces, reproducibility, governance, and workflow-level feedback loops."
+  },
+  {
+    "source_id": "scimaster_xmaster",
+    "title": "SciMaster: Towards General-Purpose Scientific AI Agents, Part I. X-Master as Foundation",
+    "url": "https://arxiv.org/abs/2507.05241",
+    "year": 2025,
+    "source_type": "arxiv_preprint",
+    "keywords": [
+      "SciMaster",
+      "X-Master",
+      "tool use",
+      "reasoning",
+      "scientific agent",
+      "validation"
+    ],
+    "summary": "Introduces a tool-augmented reasoning agent and a scattered-and-stacked workflow that scales scientific problem solving through tool use and inference-time compute."
+  },
+  {
+    "source_id": "uni_parser_omniscience",
+    "title": "OmniScience: A Large-scale Multi-modal Dataset for Scientific Image Understanding",
+    "url": "https://huggingface.co/datasets/UniParser/OmniScience",
+    "year": 2026,
+    "source_type": "dataset_card",
+    "keywords": [
+      "Uni-Parser",
+      "OmniScience",
+      "scientific document",
+      "multimodal",
+      "evidence",
+      "citation"
+    ],
+    "summary": "Describes a large scientific image-text-context dataset built from parsed open-access scientific documents, useful as an evidence substrate for scientific agents."
+  },
+  {
+    "source_id": "fec_vc_reduction",
+    "title": "Fluoroethylene Carbonate and Vinylene Carbonate Reduction: Understanding Lithium-Ion Battery Electrolyte Additives and Solid Electrolyte Interphase Formation",
+    "url": "https://doi.org/10.1021/acs.chemmater.6b02282",
+    "year": 2016,
+    "source_type": "journal_article",
+    "keywords": [
+      "fluoroethylene carbonate",
+      "vinylene carbonate",
+      "lithium-ion battery",
+      "electrolyte additive",
+      "SEI",
+      "carbonate"
+    ],
+    "summary": "Studies FEC and VC reduction products and relates their chemistry to solid-electrolyte-interphase formation in lithium-ion battery electrolytes."
+  },
+  {
+    "source_id": "vc_rechargeable_review",
+    "title": "Insights into the efficient roles of solid electrolyte interphase derived from vinylene carbonate additive in rechargeable batteries",
+    "url": "https://doi.org/10.1016/j.jelechem.2022.116126",
+    "year": 2022,
+    "source_type": "review_article",
+    "keywords": [
+      "vinylene carbonate",
+      "rechargeable batteries",
+      "electrolyte additive",
+      "SEI",
+      "thermal stability"
+    ],
+    "summary": "Reviews VC-derived SEI layers and summarizes why VC is widely used as a film-forming additive in rechargeable batteries."
+  },
+  {
+    "source_id": "electrolyte_additives_review",
+    "title": "How electrolyte additives work in Li-ion batteries",
+    "url": "https://doi.org/10.1016/j.ensm.2018.11.015",
+    "year": 2019,
+    "source_type": "review_article",
+    "keywords": [
+      "electrolyte additive",
+      "lithium battery",
+      "SEI",
+      "VC",
+      "LPF",
+      "mechanism"
+    ],
+    "summary": "Discusses mechanistic roles of representative electrolyte additives and why additive chemistry remains difficult to optimize without systematic evidence."
+  },
+  {
+    "source_id": "battery_safety_additives",
+    "title": "Investigation of lithium ion battery electrolytes containing flame retardants in combination with film forming electrolyte additives",
+    "url": "https://doi.org/10.1016/j.jpowsour.2017.10.058",
+    "year": 2017,
+    "source_type": "journal_article",
+    "keywords": [
+      "lithium battery",
+      "electrolyte additive",
+      "film forming",
+      "safety",
+      "thermal stability",
+      "FEC",
+      "VC"
+    ],
+    "summary": "Examines combinations of safety additives and film-forming additives, highlighting the need to balance safety and electrochemical performance."
+  }
+]
+

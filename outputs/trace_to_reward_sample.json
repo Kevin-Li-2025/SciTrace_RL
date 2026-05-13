@@ -1,0 +1,40 @@
+{
+  "trace_id": "trace_781970df53",
+  "task_id": "battery_electrolyte_additive_screen_v1",
+  "inputs": {
+    "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+    "candidate_ids": [
+      "FEC",
+      "VC",
+      "DTD"
+    ]
+  },
+  "tool_sequence": [
+    "literature_search",
+    "molecule_screening",
+    "report_writer"
+  ],
+  "validation_scores": {
+    "citation_integrity": 1.0,
+    "artifact_replay": 1.0,
+    "constraint_satisfaction": 1.0,
+    "claim_evidence_alignment": 1.0,
+    "claim_metadata_completeness": 1.0,
+    "ai_claim_review": 1.0
+  },
+  "reward": {
+    "reward": 0.97,
+    "quality_score": 1.0,
+    "cost_penalty": 0.03,
+    "interpretation": "Reward combines validation quality with a small execution-cost penalty.",
+    "training_use": "Can supervise planner/tool-router choices or serve as an offline RL preference label."
+  },
+  "label_semantics": "One offline training sample for planner/tool-router reward modeling.",
+  "source_artifacts": [
+    "artifact_3403b2444a",
+    "artifact_35ff7d754b",
+    "artifact_240cee50d2",
+    "artifact_1a5bdc5afb",
+    "artifact_1a369816ac"
+  ]
+}

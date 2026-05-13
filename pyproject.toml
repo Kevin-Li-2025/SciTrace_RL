@@ -1,0 +1,16 @@
+[project]
+name = "scitrace-rl"
+version = "0.1.0"
+description = "Trace, validation, and reward infrastructure for scientific AI agents."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "SciTrace-RL Demo" }]
+license = { text = "MIT" }
+
+[project.scripts]
+scitrace-rl = "scitrace_rl.cli:main"
+scitrace-rl-eval = "scitrace_rl.eval_suite:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

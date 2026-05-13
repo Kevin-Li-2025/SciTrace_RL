@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+*.zip
+outputs/**/baseline_run/
+docs/github_profile_readme.md
+docs/profile_bio_variants.md
+docs/proposal_upgrade_notes.md
+docs/application_answers.md
+docs/project_proposal.md

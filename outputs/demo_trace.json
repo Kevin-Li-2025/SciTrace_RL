@@ -1,0 +1,893 @@
+{
+  "task_id": "battery_electrolyte_additive_screen_v1",
+  "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+  "domain": "materials_science.battery_electrolyte",
+  "created_at": "2026-05-13T20:14:04+00:00",
+  "trace_id": "trace_781970df53",
+  "tools": [
+    {
+      "name": "literature_search",
+      "inputs": {
+        "query": "lithium battery electrolyte additive SEI fluorinated carbonate vinylene carbonate agentic science trace validation",
+        "top_k": 6
+      },
+      "outputs": {
+        "query": "lithium battery electrolyte additive SEI fluorinated carbonate vinylene carbonate agentic science trace validation",
+        "source_ids": [
+          "fec_vc_reduction",
+          "electrolyte_additives_review",
+          "vc_rechargeable_review",
+          "agentic_science_infra",
+          "battery_safety_additives",
+          "scimaster_xmaster"
+        ],
+        "sources": [
+          {
+            "source_id": "fec_vc_reduction",
+            "title": "Fluoroethylene Carbonate and Vinylene Carbonate Reduction: Understanding Lithium-Ion Battery Electrolyte Additives and Solid Electrolyte Interphase Formation",
+            "url": "https://doi.org/10.1021/acs.chemmater.6b02282",
+            "year": 2016,
+            "source_type": "journal_article",
+            "keywords": [
+              "fluoroethylene carbonate",
+              "vinylene carbonate",
+              "lithium-ion battery",
+              "electrolyte additive",
+              "SEI",
+              "carbonate"
+            ],
+            "summary": "Studies FEC and VC reduction products and relates their chemistry to solid-electrolyte-interphase formation in lithium-ion battery electrolytes."
+          },
+          {
+            "source_id": "electrolyte_additives_review",
+            "title": "How electrolyte additives work in Li-ion batteries",
+            "url": "https://doi.org/10.1016/j.ensm.2018.11.015",
+            "year": 2019,
+            "source_type": "review_article",
+            "keywords": [
+              "electrolyte additive",
+              "lithium battery",
+              "SEI",
+              "VC",
+              "LPF",
+              "mechanism"
+            ],
+            "summary": "Discusses mechanistic roles of representative electrolyte additives and why additive chemistry remains difficult to optimize without systematic evidence."
+          },
+          {
+            "source_id": "vc_rechargeable_review",
+            "title": "Insights into the efficient roles of solid electrolyte interphase derived from vinylene carbonate additive in rechargeable batteries",
+            "url": "https://doi.org/10.1016/j.jelechem.2022.116126",
+            "year": 2022,
+            "source_type": "review_article",
+            "keywords": [
+              "vinylene carbonate",
+              "rechargeable batteries",
+              "electrolyte additive",
+              "SEI",
+              "thermal stability"
+            ],
+            "summary": "Reviews VC-derived SEI layers and summarizes why VC is widely used as a film-forming additive in rechargeable batteries."
+          },
+          {
+            "source_id": "agentic_science_infra",
+            "title": "Bohrium + SciMaster: Building the Infrastructure and Ecosystem for Agentic Science at Scale",
+            "url": "https://arxiv.org/abs/2512.20469",
+            "year": 2025,
+            "source_type": "arxiv_preprint",
+            "keywords": [
+              "agentic science",
+              "trace",
+              "validation",
+              "Bohrium",
+              "SciMaster",
+              "workflow",
+              "infrastructure"
+            ],
+            "summary": "Argues that scalable scientific agents require agent-ready infrastructure, stable tool interfaces, execution traces, reproducibility, governance, and workflow-level feedback loops."
+          },
+          {
+            "source_id": "battery_safety_additives",
+            "title": "Investigation of lithium ion battery electrolytes containing flame retardants in combination with film forming electrolyte additives",
+            "url": "https://doi.org/10.1016/j.jpowsour.2017.10.058",
+            "year": 2017,
+            "source_type": "journal_article",
+            "keywords": [
+              "lithium battery",
+              "electrolyte additive",
+              "film forming",
+              "safety",
+              "thermal stability",
+              "FEC",
+              "VC"
+            ],
+            "summary": "Examines combinations of safety additives and film-forming additives, highlighting the need to balance safety and electrochemical performance."
+          },
+          {
+            "source_id": "scimaster_xmaster",
+            "title": "SciMaster: Towards General-Purpose Scientific AI Agents, Part I. X-Master as Foundation",
+            "url": "https://arxiv.org/abs/2507.05241",
+            "year": 2025,
+            "source_type": "arxiv_preprint",
+            "keywords": [
+              "SciMaster",
+              "X-Master",
+              "tool use",
+              "reasoning",
+              "scientific agent",
+              "validation"
+            ],
+            "summary": "Introduces a tool-augmented reasoning agent and a scattered-and-stacked workflow that scales scientific problem solving through tool use and inference-time compute."
+          }
+        ],
+        "coverage": {
+          "matched_terms": [
+            "additive",
+            "agentic",
+            "battery",
+            "carbonate",
+            "electrolyte",
+            "fluorinated",
+            "lithium",
+            "science",
+            "sei",
+            "trace",
+            "validation",
+            "vinylene"
+          ],
+          "num_sources": 6,
+          "corpus_sha256": "520a2f6f629e382e12d8fa37b71a609621c62631261c1a6cd90999332d37b7f4"
+        }
+      },
+      "status": "success",
+      "started_at": "2026-05-13T20:14:04+00:00",
+      "ended_at": "2026-05-13T20:14:04+00:00",
+      "duration_ms": 0,
+      "artifacts": [
+        "artifact_3403b2444a"
+      ],
+      "call_id": "call_4905ffe7ea",
+      "output_hash": "814055f722919c1d988ec39ed5bc5ba9037c797701e394489681969f57370ec6"
+    },
+    {
+      "name": "molecule_screening",
+      "inputs": {
+        "candidates": [
+          {
+            "candidate_id": "FEC",
+            "name": "Fluoroethylene carbonate",
+            "formula": "C3H3FO3",
+            "role_hypothesis": "Fluorinated carbonate additive that can contribute fluorine-containing SEI species and improve interphase formation.",
+            "evidence_source_ids": [
+              "fec_vc_reduction",
+              "electrolyte_additives_review"
+            ],
+            "risk_flags": []
+          },
+          {
+            "candidate_id": "VC",
+            "name": "Vinylene carbonate",
+            "formula": "C3H2O3",
+            "role_hypothesis": "Classic film-forming additive for graphite-anode SEI formation.",
+            "evidence_source_ids": [
+              "fec_vc_reduction",
+              "vc_rechargeable_review",
+              "electrolyte_additives_review"
+            ],
+            "risk_flags": [
+              "reactivity_tradeoff"
+            ]
+          },
+          {
+            "candidate_id": "DTD",
+            "name": "1,3,2-Dioxathiolane-2,2-dioxide",
+            "formula": "C2H4O4S",
+            "role_hypothesis": "Sulfur-containing additive proxy for testing whether heteroatom-rich additives are prioritized by the traceable screening workflow.",
+            "evidence_source_ids": [
+              "electrolyte_additives_review",
+              "battery_safety_additives"
+            ],
+            "risk_flags": [
+              "needs_domain_expert_review"
+            ]
+          }
+        ],
+        "constraints": {
+          "molecular_weight": {
+            "min": 60,
+            "max": 180
+          },
+          "minimum_screening_score": 0.75,
+          "required_validation_gates": [
+            "citation_integrity",
+            "artifact_replay",
+            "constraint_satisfaction",
+            "claim_evidence_alignment",
+            "claim_metadata_completeness"
+          ]
+        }
+      },
+      "outputs": {
+        "ranked_candidates": [
+          {
+            "candidate_id": "FEC",
+            "name": "Fluoroethylene carbonate",
+            "formula": "C3H3FO3",
+            "role_hypothesis": "Fluorinated carbonate additive that can contribute fluorine-containing SEI species and improve interphase formation.",
+            "evidence_source_ids": [
+              "fec_vc_reduction",
+              "electrolyte_additives_review"
+            ],
+            "risk_flags": [],
+            "computed": {
+              "atoms": {
+                "C": 3,
+                "H": 3,
+                "F": 1,
+                "O": 3
+              },
+              "molecular_weight": 106.052,
+              "hetero_atom_count": 4
+            },
+            "screening_score": 0.89,
+            "score_rationale": [
+              "literature support",
+              "hetero atoms can participate in interphase chemistry",
+              "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+              "penalize candidates outside molecular-weight or safety constraints"
+            ]
+          },
+          {
+            "candidate_id": "DTD",
+            "name": "1,3,2-Dioxathiolane-2,2-dioxide",
+            "formula": "C2H4O4S",
+            "role_hypothesis": "Sulfur-containing additive proxy for testing whether heteroatom-rich additives are prioritized by the traceable screening workflow.",
+            "evidence_source_ids": [
+              "electrolyte_additives_review",
+              "battery_safety_additives"
+            ],
+            "risk_flags": [
+              "needs_domain_expert_review"
+            ],
+            "computed": {
+              "atoms": {
+                "C": 2,
+                "H": 4,
+                "O": 4,
+                "S": 1
+              },
+              "molecular_weight": 124.11,
+              "hetero_atom_count": 5
+            },
+            "screening_score": 0.76,
+            "score_rationale": [
+              "literature support",
+              "hetero atoms can participate in interphase chemistry",
+              "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+              "penalize candidates outside molecular-weight or safety constraints"
+            ]
+          },
+          {
+            "candidate_id": "VC",
+            "name": "Vinylene carbonate",
+            "formula": "C3H2O3",
+            "role_hypothesis": "Classic film-forming additive for graphite-anode SEI formation.",
+            "evidence_source_ids": [
+              "fec_vc_reduction",
+              "vc_rechargeable_review",
+              "electrolyte_additives_review"
+            ],
+            "risk_flags": [
+              "reactivity_tradeoff"
+            ],
+            "computed": {
+              "atoms": {
+                "C": 3,
+                "H": 2,
+                "O": 3
+              },
+              "molecular_weight": 86.046,
+              "hetero_atom_count": 3
+            },
+            "screening_score": 0.71,
+            "score_rationale": [
+              "literature support",
+              "hetero atoms can participate in interphase chemistry",
+              "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+              "penalize candidates outside molecular-weight or safety constraints"
+            ]
+          }
+        ],
+        "top_candidate": {
+          "candidate_id": "FEC",
+          "name": "Fluoroethylene carbonate",
+          "formula": "C3H3FO3",
+          "role_hypothesis": "Fluorinated carbonate additive that can contribute fluorine-containing SEI species and improve interphase formation.",
+          "evidence_source_ids": [
+            "fec_vc_reduction",
+            "electrolyte_additives_review"
+          ],
+          "risk_flags": [],
+          "computed": {
+            "atoms": {
+              "C": 3,
+              "H": 3,
+              "F": 1,
+              "O": 3
+            },
+            "molecular_weight": 106.052,
+            "hetero_atom_count": 4
+          },
+          "screening_score": 0.89,
+          "score_rationale": [
+            "literature support",
+            "hetero atoms can participate in interphase chemistry",
+            "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+            "penalize candidates outside molecular-weight or safety constraints"
+          ]
+        },
+        "constraints": {
+          "molecular_weight": {
+            "min": 60,
+            "max": 180
+          },
+          "minimum_screening_score": 0.75,
+          "required_validation_gates": [
+            "citation_integrity",
+            "artifact_replay",
+            "constraint_satisfaction",
+            "claim_evidence_alignment",
+            "claim_metadata_completeness"
+          ]
+        }
+      },
+      "status": "success",
+      "started_at": "2026-05-13T20:14:04+00:00",
+      "ended_at": "2026-05-13T20:14:04+00:00",
+      "duration_ms": 0,
+      "artifacts": [
+        "artifact_35ff7d754b"
+      ],
+      "call_id": "call_b2022c85b7",
+      "output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
+    },
+    {
+      "name": "report_writer",
+      "inputs": {
+        "task": {
+          "task_id": "battery_electrolyte_additive_screen_v1",
+          "domain": "materials_science.battery_electrolyte",
+          "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+          "retrieval_query": "lithium battery electrolyte additive SEI fluorinated carbonate vinylene carbonate agentic science trace validation",
+          "top_k_sources": 6,
+          "constraints": {
+            "molecular_weight": {
+              "min": 60,
+              "max": 180
+            },
+            "minimum_screening_score": 0.75,
+            "required_validation_gates": [
+              "citation_integrity",
+              "artifact_replay",
+              "constraint_satisfaction",
+              "claim_evidence_alignment",
+              "claim_metadata_completeness"
+            ]
+          },
+          "candidates": [
+            {
+              "candidate_id": "FEC",
+              "name": "Fluoroethylene carbonate",
+              "formula": "C3H3FO3",
+              "role_hypothesis": "Fluorinated carbonate additive that can contribute fluorine-containing SEI species and improve interphase formation.",
+              "evidence_source_ids": [
+                "fec_vc_reduction",
+                "electrolyte_additives_review"
+              ],
+              "risk_flags": []
+            },
+            {
+              "candidate_id": "VC",
+              "name": "Vinylene carbonate",
+              "formula": "C3H2O3",
+              "role_hypothesis": "Classic film-forming additive for graphite-anode SEI formation.",
+              "evidence_source_ids": [
+                "fec_vc_reduction",
+                "vc_rechargeable_review",
+                "electrolyte_additives_review"
+              ],
+              "risk_flags": [
+                "reactivity_tradeoff"
+              ]
+            },
+            {
+              "candidate_id": "DTD",
+              "name": "1,3,2-Dioxathiolane-2,2-dioxide",
+              "formula": "C2H4O4S",
+              "role_hypothesis": "Sulfur-containing additive proxy for testing whether heteroatom-rich additives are prioritized by the traceable screening workflow.",
+              "evidence_source_ids": [
+                "electrolyte_additives_review",
+                "battery_safety_additives"
+              ],
+              "risk_flags": [
+                "needs_domain_expert_review"
+              ]
+            }
+          ]
+        },
+        "sources": [
+          {
+            "source_id": "fec_vc_reduction",
+            "title": "Fluoroethylene Carbonate and Vinylene Carbonate Reduction: Understanding Lithium-Ion Battery Electrolyte Additives and Solid Electrolyte Interphase Formation",
+            "url": "https://doi.org/10.1021/acs.chemmater.6b02282",
+            "year": 2016,
+            "source_type": "journal_article",
+            "keywords": [
+              "fluoroethylene carbonate",
+              "vinylene carbonate",
+              "lithium-ion battery",
+              "electrolyte additive",
+              "SEI",
+              "carbonate"
+            ],
+            "summary": "Studies FEC and VC reduction products and relates their chemistry to solid-electrolyte-interphase formation in lithium-ion battery electrolytes."
+          },
+          {
+            "source_id": "electrolyte_additives_review",
+            "title": "How electrolyte additives work in Li-ion batteries",
+            "url": "https://doi.org/10.1016/j.ensm.2018.11.015",
+            "year": 2019,
+            "source_type": "review_article",
+            "keywords": [
+              "electrolyte additive",
+              "lithium battery",
+              "SEI",
+              "VC",
+              "LPF",
+              "mechanism"
+            ],
+            "summary": "Discusses mechanistic roles of representative electrolyte additives and why additive chemistry remains difficult to optimize without systematic evidence."
+          },
+          {
+            "source_id": "vc_rechargeable_review",
+            "title": "Insights into the efficient roles of solid electrolyte interphase derived from vinylene carbonate additive in rechargeable batteries",
+            "url": "https://doi.org/10.1016/j.jelechem.2022.116126",
+            "year": 2022,
+            "source_type": "review_article",
+            "keywords": [
+              "vinylene carbonate",
+              "rechargeable batteries",
+              "electrolyte additive",
+              "SEI",
+              "thermal stability"
+            ],
+            "summary": "Reviews VC-derived SEI layers and summarizes why VC is widely used as a film-forming additive in rechargeable batteries."
+          },
+          {
+            "source_id": "agentic_science_infra",
+            "title": "Bohrium + SciMaster: Building the Infrastructure and Ecosystem for Agentic Science at Scale",
+            "url": "https://arxiv.org/abs/2512.20469",
+            "year": 2025,
+            "source_type": "arxiv_preprint",
+            "keywords": [
+              "agentic science",
+              "trace",
+              "validation",
+              "Bohrium",
+              "SciMaster",
+              "workflow",
+              "infrastructure"
+            ],
+            "summary": "Argues that scalable scientific agents require agent-ready infrastructure, stable tool interfaces, execution traces, reproducibility, governance, and workflow-level feedback loops."
+          },
+          {
+            "source_id": "battery_safety_additives",
+            "title": "Investigation of lithium ion battery electrolytes containing flame retardants in combination with film forming electrolyte additives",
+            "url": "https://doi.org/10.1016/j.jpowsour.2017.10.058",
+            "year": 2017,
+            "source_type": "journal_article",
+            "keywords": [
+              "lithium battery",
+              "electrolyte additive",
+              "film forming",
+              "safety",
+              "thermal stability",
+              "FEC",
+              "VC"
+            ],
+            "summary": "Examines combinations of safety additives and film-forming additives, highlighting the need to balance safety and electrochemical performance."
+          },
+          {
+            "source_id": "scimaster_xmaster",
+            "title": "SciMaster: Towards General-Purpose Scientific AI Agents, Part I. X-Master as Foundation",
+            "url": "https://arxiv.org/abs/2507.05241",
+            "year": 2025,
+            "source_type": "arxiv_preprint",
+            "keywords": [
+              "SciMaster",
+              "X-Master",
+              "tool use",
+              "reasoning",
+              "scientific agent",
+              "validation"
+            ],
+            "summary": "Introduces a tool-augmented reasoning agent and a scattered-and-stacked workflow that scales scientific problem solving through tool use and inference-time compute."
+          }
+        ],
+        "screening": {
+          "ranked_candidates": [
+            {
+              "candidate_id": "FEC",
+              "name": "Fluoroethylene carbonate",
+              "formula": "C3H3FO3",
+              "role_hypothesis": "Fluorinated carbonate additive that can contribute fluorine-containing SEI species and improve interphase formation.",
+              "evidence_source_ids": [
+                "fec_vc_reduction",
+                "electrolyte_additives_review"
+              ],
+              "risk_flags": [],
+              "computed": {
+                "atoms": {
+                  "C": 3,
+                  "H": 3,
+                  "F": 1,
+                  "O": 3
+                },
+                "molecular_weight": 106.052,
+                "hetero_atom_count": 4
+              },
+              "screening_score": 0.89,
+              "score_rationale": [
+                "literature support",
+                "hetero atoms can participate in interphase chemistry",
+                "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+                "penalize candidates outside molecular-weight or safety constraints"
+              ]
+            },
+            {
+              "candidate_id": "DTD",
+              "name": "1,3,2-Dioxathiolane-2,2-dioxide",
+              "formula": "C2H4O4S",
+              "role_hypothesis": "Sulfur-containing additive proxy for testing whether heteroatom-rich additives are prioritized by the traceable screening workflow.",
+              "evidence_source_ids": [
+                "electrolyte_additives_review",
+                "battery_safety_additives"
+              ],
+              "risk_flags": [
+                "needs_domain_expert_review"
+              ],
+              "computed": {
+                "atoms": {
+                  "C": 2,
+                  "H": 4,
+                  "O": 4,
+                  "S": 1
+                },
+                "molecular_weight": 124.11,
+                "hetero_atom_count": 5
+              },
+              "screening_score": 0.76,
+              "score_rationale": [
+                "literature support",
+                "hetero atoms can participate in interphase chemistry",
+                "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+                "penalize candidates outside molecular-weight or safety constraints"
+              ]
+            },
+            {
+              "candidate_id": "VC",
+              "name": "Vinylene carbonate",
+              "formula": "C3H2O3",
+              "role_hypothesis": "Classic film-forming additive for graphite-anode SEI formation.",
+              "evidence_source_ids": [
+                "fec_vc_reduction",
+                "vc_rechargeable_review",
+                "electrolyte_additives_review"
+              ],
+              "risk_flags": [
+                "reactivity_tradeoff"
+              ],
+              "computed": {
+                "atoms": {
+                  "C": 3,
+                  "H": 2,
+                  "O": 3
+                },
+                "molecular_weight": 86.046,
+                "hetero_atom_count": 3
+              },
+              "screening_score": 0.71,
+              "score_rationale": [
+                "literature support",
+                "hetero atoms can participate in interphase chemistry",
+                "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+                "penalize candidates outside molecular-weight or safety constraints"
+              ]
+            }
+          ],
+          "top_candidate": {
+            "candidate_id": "FEC",
+            "name": "Fluoroethylene carbonate",
+            "formula": "C3H3FO3",
+            "role_hypothesis": "Fluorinated carbonate additive that can contribute fluorine-containing SEI species and improve interphase formation.",
+            "evidence_source_ids": [
+              "fec_vc_reduction",
+              "electrolyte_additives_review"
+            ],
+            "risk_flags": [],
+            "computed": {
+              "atoms": {
+                "C": 3,
+                "H": 3,
+                "F": 1,
+                "O": 3
+              },
+              "molecular_weight": 106.052,
+              "hetero_atom_count": 4
+            },
+            "screening_score": 0.89,
+            "score_rationale": [
+              "literature support",
+              "hetero atoms can participate in interphase chemistry",
+              "fluorine/sulfur bonuses are proxy features for SEI-forming additives",
+              "penalize candidates outside molecular-weight or safety constraints"
+            ]
+          },
+          "constraints": {
+            "molecular_weight": {
+              "min": 60,
+              "max": 180
+            },
+            "minimum_screening_score": 0.75,
+            "required_validation_gates": [
+              "citation_integrity",
+              "artifact_replay",
+              "constraint_satisfaction",
+              "claim_evidence_alignment",
+              "claim_metadata_completeness"
+            ]
+          }
+        }
+      },
+      "outputs": {
+        "markdown": "# Agent-Grounded Candidate Report\n\n## Task\nScreen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.\n\n## Recommendation\nPrioritize **Fluoroethylene carbonate** (`FEC`) for the next dry-lab or wet-lab validation loop. The recommendation is provisional: it is based on a lightweight, reproducible proxy screen, not on high-fidelity quantum chemistry or real battery cycling data.\n\n## Evidence Chain\n- [fec_vc_reduction] Fluoroethylene Carbonate and Vinylene Carbonate Reduction: Understanding Lithium-Ion Battery Electrolyte Additives and Solid Electrolyte Interphase Formation (https://doi.org/10.1021/acs.chemmater.6b02282)\n- [electrolyte_additives_review] How electrolyte additives work in Li-ion batteries (https://doi.org/10.1016/j.ensm.2018.11.015)\n\n## Candidate Ranking\n| Rank | Candidate | Formula | Score | Key evidence |\n|---:|---|---|---:|---|\n| 1 | Fluoroethylene carbonate | C3H3FO3 | 0.890 | fec_vc_reduction, electrolyte_additives_review |\n| 2 | 1,3,2-Dioxathiolane-2,2-dioxide | C2H4O4S | 0.760 | electrolyte_additives_review, battery_safety_additives |\n| 3 | Vinylene carbonate | C3H2O3 | 0.710 | fec_vc_reduction, vc_rechargeable_review, electrolyte_additives_review |\n\n## Validation Hooks\n- Re-run `molecule_screening` with the same candidates and constraints; the output hash should match.\n- Check every cited source id in the report against the retrieval results.\n- Promote the top candidate only if the molecular-weight constraint, evidence coverage, and claim-evidence alignment gates pass.\n\n## Next Step\nReplace the proxy screening tool with a Bohrium/Lebesgue job adapter for molecular simulation, then feed validated results back into the trace-to-reward dataset.\n",
+        "claims": [
+          {
+            "claim_id": "claim_top_candidate",
+            "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+            "evidence_source_ids": [
+              "fec_vc_reduction",
+              "electrolyte_additives_review"
+            ],
+            "artifact_keys": [
+              "ranked_candidates",
+              "top_candidate"
+            ]
+          },
+          {
+            "claim_id": "claim_reproducibility",
+            "text": "The recommendation must be treated as provisional until higher-fidelity validation is executed.",
+            "evidence_source_ids": [
+              "agentic_science_infra"
+            ],
+            "artifact_keys": [
+              "validation_policy"
+            ]
+          }
+        ],
+        "citation_ids": [
+          "battery_safety_additives",
+          "electrolyte_additives_review",
+          "fec_vc_reduction",
+          "vc_rechargeable_review"
+        ]
+      },
+      "status": "success",
+      "started_at": "2026-05-13T20:14:04+00:00",
+      "ended_at": "2026-05-13T20:14:04+00:00",
+      "duration_ms": 0,
+      "artifacts": [
+        "artifact_240cee50d2"
+      ],
+      "call_id": "call_4521db387b",
+      "output_hash": "385666187c338aa14e0e9130168075094172d7fdbc0cf155afcc92a2682eaefb"
+    }
+  ],
+  "artifacts": [
+    {
+      "kind": "retrieved_evidence",
+      "uri": "outputs/retrieved_sources.json",
+      "summary": "6 retrieved sources for the task query.",
+      "metadata": {
+        "source_ids": [
+          "fec_vc_reduction",
+          "electrolyte_additives_review",
+          "vc_rechargeable_review",
+          "agentic_science_infra",
+          "battery_safety_additives",
+          "scimaster_xmaster"
+        ]
+      },
+      "artifact_id": "artifact_3403b2444a",
+      "sha256": "3403b2444ab2e663ef53ddd33731ff9a39d6454dfdb2f1b2e19d706981026fc4"
+    },
+    {
+      "kind": "ranked_candidates",
+      "uri": "outputs/ranked_candidates.json",
+      "summary": "Candidate ranking with deterministic proxy chemistry features.",
+      "metadata": {
+        "top_candidate_id": "FEC"
+      },
+      "artifact_id": "artifact_35ff7d754b",
+      "sha256": "35ff7d754bc878daf5fbf1259f12da56fb38dc994edc832b8d8a2a665f3c2701"
+    },
+    {
+      "kind": "agent_report",
+      "uri": "outputs/demo_report.md",
+      "summary": "Citation-grounded candidate report generated from trace artifacts.",
+      "metadata": {
+        "claim_count": 2
+      },
+      "artifact_id": "artifact_240cee50d2",
+      "sha256": "240cee50d283eb0851ad00360c8e184ca8335b4c6090b440bc34a250fb3f967c"
+    },
+    {
+      "kind": "validation_scorecard",
+      "uri": "outputs/validation_scorecard.json",
+      "summary": "Machine-readable validation gates for the scientific-agent run.",
+      "metadata": {
+        "validation_names": [
+          "citation_integrity",
+          "artifact_replay",
+          "constraint_satisfaction",
+          "claim_evidence_alignment",
+          "claim_metadata_completeness",
+          "ai_claim_review"
+        ]
+      },
+      "artifact_id": "artifact_1a5bdc5afb",
+      "sha256": "1a5bdc5afb95b360f0853fe6a3fae21f2932f9d78eba4eaa9d6584f5baad939c"
+    },
+    {
+      "kind": "trace_to_reward_sample",
+      "uri": "outputs/trace_to_reward_sample.json",
+      "summary": "Reward-labeled training sample derived from the validated execution trace.",
+      "metadata": {
+        "reward": 0.97
+      },
+      "artifact_id": "artifact_1a369816ac",
+      "sha256": "1a369816ac593307bb664130b62e1eccdf1ec45b3b22344a237e9adb9e090460"
+    }
+  ],
+  "validations": [
+    {
+      "name": "citation_integrity",
+      "status": "pass",
+      "score": 1.0,
+      "message": "All report citations resolve to retrieved evidence.",
+      "evidence": {
+        "cited": [
+          "battery_safety_additives",
+          "electrolyte_additives_review",
+          "fec_vc_reduction",
+          "vc_rechargeable_review"
+        ],
+        "available": [
+          "agentic_science_infra",
+          "battery_safety_additives",
+          "electrolyte_additives_review",
+          "fec_vc_reduction",
+          "scimaster_xmaster",
+          "vc_rechargeable_review"
+        ],
+        "missing": []
+      },
+      "validation_id": "validation_4323602cf3"
+    },
+    {
+      "name": "artifact_replay",
+      "status": "pass",
+      "score": 1.0,
+      "message": "Screening output is deterministic and replayable.",
+      "evidence": {
+        "original_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c",
+        "replay_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
+      },
+      "validation_id": "validation_858bcdce31"
+    },
+    {
+      "name": "constraint_satisfaction",
+      "status": "pass",
+      "score": 1.0,
+      "message": "Top candidate satisfies lightweight design constraints.",
+      "evidence": {
+        "candidate_id": "FEC",
+        "molecular_weight": 106.052,
+        "screening_score": 0.89,
+        "constraints": {
+          "molecular_weight": {
+            "min": 60,
+            "max": 180
+          },
+          "minimum_screening_score": 0.75,
+          "required_validation_gates": [
+            "citation_integrity",
+            "artifact_replay",
+            "constraint_satisfaction",
+            "claim_evidence_alignment",
+            "claim_metadata_completeness"
+          ]
+        }
+      },
+      "validation_id": "validation_f534f53950"
+    },
+    {
+      "name": "claim_evidence_alignment",
+      "status": "pass",
+      "score": 1.0,
+      "message": "The top-candidate claim is grounded in the ranked artifact.",
+      "evidence": {
+        "top_candidate": "FEC",
+        "top_candidate_name": "Fluoroethylene carbonate",
+        "claim_mentions_top": true,
+        "report_mentions_top": true,
+        "matching_claims": [
+          {
+            "claim_id": "claim_top_candidate",
+            "text": "Fluoroethylene carbonate is the top-ranked candidate in this run.",
+            "evidence_source_ids": [
+              "fec_vc_reduction",
+              "electrolyte_additives_review"
+            ],
+            "artifact_keys": [
+              "ranked_candidates",
+              "top_candidate"
+            ]
+          }
+        ]
+      },
+      "validation_id": "validation_7f4fe4d471"
+    },
+    {
+      "name": "claim_metadata_completeness",
+      "status": "pass",
+      "score": 1.0,
+      "message": "All claims include source ids and artifact keys.",
+      "evidence": {
+        "missing_source_ids": [],
+        "missing_artifact_keys": [],
+        "claim_count": 2
+      },
+      "validation_id": "validation_b63c303089"
+    },
+    {
+      "name": "ai_claim_review",
+      "status": "skip",
+      "score": 1.0,
+      "message": "Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.",
+      "evidence": {
+        "configured": false,
+        "provider": null,
+        "model": null,
+        "unsupported_claim_ids": [],
+        "reviewed_claim_ids": [],
+        "raw_response_hash": null
+      },
+      "validation_id": "validation_67f8129e07"
+    }
+  ],
+  "metrics": {
+    "total_tool_calls": 3,
+    "successful_tool_calls": 3,
+    "artifact_count": 5,
+    "validation_count": 6,
+    "screening_output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
+  },
+  "reward": {
+    "reward": 0.97,
+    "quality_score": 1.0,
+    "cost_penalty": 0.03,
+    "interpretation": "Reward combines validation quality with a small execution-cost penalty.",
+    "training_use": "Can supervise planner/tool-router choices or serve as an offline RL preference label."
+  }
+}
