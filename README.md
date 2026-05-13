@@ -155,6 +155,42 @@ Run DeepSeek-backed evaluation:
 PYTHONPATH=src python3 -m scitrace_rl.eval_suite --out outputs/eval_deepseek
 ```
 
+## Benchmark-Aligned Evaluation
+
+Recent science-agent and research-agent benchmarks suggest that a credible demo should test more than final-answer quality. SciTrace-RL therefore maps the public benchmark landscape into local, reproducible checks:
+
+| Benchmark | What it stresses | SciTrace-RL coverage |
+|---|---|---|
+| [CORE-Bench](https://arxiv.org/abs/2409.11363) | Computational reproducibility across paper-based tasks | `artifact_replay`, deterministic screening hashes, `deep_eval` stability runs |
+| [PaperBench](https://arxiv.org/abs/2504.01848) | Paper-to-code replication, experiment execution, rubric grading | trace artifacts, replay gates, report artifacts, structured validation scorecard |
+| [MLR-Bench](https://arxiv.org/abs/2505.19955) | Open-ended ML research agents and fabricated experiment risk | adversarial cases for invented computation, unsupported quantitative claims, and premature deployment |
+| [DeepResearch Bench](https://arxiv.org/abs/2506.11763) | Research-report quality, effective citations, citation accuracy | `citation_integrity`, `citation_support_precision`, claim metadata checks |
+| [TRAJECT-Bench](https://arxiv.org/abs/2510.04550) | Tool selection, argument correctness, dependency/order satisfaction | `trajectory_quality` validates tool order, output contracts, artifact links, and duration sanity |
+| [AIRS-Bench](https://arxiv.org/abs/2602.06855) | Full research lifecycle: ideas, experiments, analysis, iteration | `post_training_bundle`, `escalation_packet`, external feedback ingestion |
+| [SPOT](https://arxiv.org/abs/2505.11855) | Verification of scientific errors in manuscripts | negative cases for wrong mechanism, unsupported transfer, overconfident safety, and citation mismatch |
+| [FIRE-Bench](https://arxiv.org/abs/2602.02905) | Full-cycle scientific insight rediscovery | current coverage is partial: trace/reward/escalation infrastructure; real rediscovery tasks are future work |
+| [MMDeepResearch-Bench](https://arxiv.org/abs/2601.12346) | Multimodal evidence grounding and citation integrity | current text-only trace design can ingest Uni-Parser/OmniScience artifacts, but multimodal support is future work |
+
+Current comprehensive local run:
+
+```text
+unit tests: 4/4 passed
+demo reward: 0.97
+validation gates: 8
+trajectory_quality: pass
+citation_support_precision: pass
+15-case adversarial eval: pass
+deterministic_detection_rate: 1.0
+citation_support_detection_rate: 1.0
+semantic_or_support_detection_rate: 1.0
+supported_case_pass_rate: 1.0
+auto_resolvable_coverage: 0.8
+expert_required_case_share: 0.2
+deep_eval overall_status: pass
+multi-run stability: 5 runs, 0 drift
+external-result ingestion: pass
+```
+
 ## Key Artifacts
 
 - `docs/project_proposal_scitrace_rl.pdf`: concise proposal PDF.
