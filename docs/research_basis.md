@@ -32,10 +32,27 @@ This project direction is grounded in public signals from DP Technology and the 
 - OpenAI Deep Research focuses on multi-step research with citations and source traceability.
 - OpenAI o-series reasoning models can use tools such as web browsing, Python, file analysis, and visual inputs.
 - Google AI co-scientist explores multi-agent hypothesis generation, debate, ranking, and evolution for scientific discovery.
+- PaperBench reports that the best tested agent reached only a 21.0% average replication score on state-of-the-art AI research replication tasks.
+- FIRE-Bench frames full-cycle discovery as constrained rediscovery and reports that even strong agents remain below 50 F1, with recurring failures in experimental design, execution, and evidence-based reasoning.
+- SPOT evaluates AI-assisted manuscript verification and reports that no tested model exceeds 21.1% recall or 6.1% precision on significant paper errors.
 - Sources:
   - https://help.openai.com/en/articles/10500283-deep-research
   - https://openai.com/index/introducing-o3-and-o4-mini/
   - https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist
+  - https://arxiv.org/abs/2504.01848
+  - https://arxiv.org/abs/2602.02905
+  - https://arxiv.org/abs/2505.11855
+
+## Provenance and Observability Standards
+
+- W3C PROV defines provenance as information about entities, activities, and people involved in producing a data object or thing, so that quality, reliability, and trustworthiness can be assessed.
+- Workflow Run RO-Crate packages the provenance of computational workflow executions and their associated inputs, outputs, code, and metadata.
+- OpenTelemetry GenAI semantic conventions are defining span shapes for agent workflows and tool execution, which makes agent traces easier to ingest into production observability systems.
+- SciTrace-RL now exports `provenance_bundle.json` with three views of the same run: `ro_crate`, `prov`, and `otel`.
+- Sources:
+  - https://www.w3.org/TR/prov-overview/
+  - https://www.researchobject.org/workflow-run-crate/
+  - https://opentelemetry.io/docs/specs/semconv/gen-ai/gen-ai-agent-spans/
 
 ## DeepSeek API Validation Layer
 

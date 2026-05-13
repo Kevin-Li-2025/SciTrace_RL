@@ -61,6 +61,16 @@ A machine-readable gate that decides whether a workflow is trustworthy enough to
 
 A scalar and explanation generated from validation quality and execution cost. This is the bridge from infrastructure to learning: successful and failed traces can become training data for planners, tool routers, and future scientific agents.
 
+### Provenance Bundle
+
+An interoperability export generated from the same trace. It has three views:
+
+- `ro_crate`: a Workflow Run RO-Crate-style graph for FAIR scientific workflow packaging.
+- `prov`: a W3C PROV-style graph of entities, activities, agents, usage, and generated artifacts.
+- `otel`: an OpenTelemetry-style span tree for workflow, tool calls, and validation gates.
+
+This keeps SciTrace-RL from becoming a private log format. The trace can be inspected locally, packaged as a scientific workflow record, and mapped into production observability systems.
+
 ## Runtime Flow
 
 ```mermaid
@@ -86,6 +96,7 @@ sequenceDiagram
     Runner->>Gates: trace artifacts
     Gates-->>Runner: validation scorecard
     Runner->>Store: trace JSON + reward sample + dashboard
+    Runner->>Store: provenance bundle
 ```
 
 ## Why This Is More Than Logging
@@ -95,7 +106,8 @@ Plain logs tell what happened. SciTrace-RL adds four things:
 1. Structured contracts for tool calls.
 2. Replayable artifacts with hashes.
 3. Validation gates that produce machine-readable pass/fail scores, with optional AI semantic review.
-4. Reward labels that can train future orchestration policies.
+4. Standards-aware provenance exports for FAIR workflow records and agent observability.
+5. Reward labels that can train future orchestration policies.
 
 This is the key difference between a demo agent and production AI4S infrastructure.
 
@@ -108,4 +120,5 @@ This is the key difference between a demo agent and production AI4S infrastructu
 | Local report writer | SciMaster report agent |
 | Validation gates | platform-level governance and scientific evaluation |
 | JSON trace store | shared trace/event store |
+| Provenance bundle | W3C PROV, Workflow Run RO-Crate, OpenTelemetry traces |
 | Reward sample | offline RL, preference data, planner evaluation |

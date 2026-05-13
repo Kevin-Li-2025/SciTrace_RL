@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from .dashboard import render_dashboard
+from .provenance import build_provenance_bundle
 from .schema import Artifact, Trace
 from .tools import LiteratureSearchTool, MoleculeScreeningTool, ReportWriterTool
 from .utils import read_json, sha256_json, write_json, write_text
@@ -110,6 +111,20 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
             metadata={"reward": trace.reward["reward"]},
         )
     )
+    provenance_artifact = trace.add_artifact(
+        Artifact(
+            kind="provenance_bundle",
+            uri=str(output_dir / "provenance_bundle.json"),
+            summary="Interoperability export aligned with W3C PROV, Workflow Run RO-Crate, and OpenTelemetry spans.",
+            metadata={
+                "profiles": [
+                    "W3C PROV",
+                    "Workflow Run RO-Crate",
+                    "OpenTelemetry GenAI semantic conventions",
+                ]
+            },
+        )
+    )
 
     trace.metrics = {
         "total_tool_calls": len(trace.tools),
@@ -125,6 +140,7 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
     write_text(output_dir / "demo_report.md", report.result["markdown"])
     write_json(output_dir / "validation_scorecard.json", [validation.__dict__ for validation in trace.validations])
     write_json(output_dir / "demo_trace.json", trace_dict)
+    write_json(output_dir / "provenance_bundle.json", build_provenance_bundle(trace_dict))
     render_dashboard(trace_dict, report.result["markdown"], output_dir / "demo_dashboard.html")
     write_json(
         output_dir / "trace_to_reward_sample.json",
@@ -145,6 +161,7 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
                 report_artifact.artifact_id,
                 validation_artifact.artifact_id,
                 reward_artifact.artifact_id,
+                provenance_artifact.artifact_id,
             ],
         },
     )

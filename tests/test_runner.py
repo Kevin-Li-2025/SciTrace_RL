@@ -6,6 +6,7 @@ from pathlib import Path
 
 from scitrace_rl.chemistry import formula_stats
 from scitrace_rl.eval_suite import run_eval_suite
+from scitrace_rl.utils import read_json
 from scitrace_rl.runner import run_task
 
 
@@ -32,6 +33,13 @@ class RunnerTests(unittest.TestCase):
             self.assertGreaterEqual(trace["reward"]["reward"], 0.9)
             self.assertTrue((out / "demo_trace.json").exists())
             self.assertTrue((out / "trace_to_reward_sample.json").exists())
+            self.assertTrue((out / "provenance_bundle.json").exists())
+            provenance = read_json(out / "provenance_bundle.json")
+            self.assertEqual(provenance["trace_id"], trace["trace_id"])
+            self.assertIn("ro_crate", provenance)
+            self.assertIn("prov", provenance)
+            self.assertIn("otel", provenance)
+            self.assertGreaterEqual(len(provenance["otel"]["spans"]), 1 + trace["metrics"]["total_tool_calls"])
             required = {
                 "citation_integrity",
                 "artifact_replay",
