@@ -2,8 +2,8 @@
   "task_id": "battery_electrolyte_additive_screen_v1",
   "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
   "domain": "materials_science.battery_electrolyte",
-  "created_at": "2026-05-13T22:11:18+00:00",
-  "trace_id": "trace_051d451555",
+  "created_at": "2026-05-13T22:59:00+00:00",
+  "trace_id": "trace_70c9dcc044",
   "tools": [
     {
       "name": "literature_search",
@@ -140,8 +140,8 @@
         }
       },
       "status": "success",
-      "started_at": "2026-05-13T22:11:18+00:00",
-      "ended_at": "2026-05-13T22:11:18+00:00",
+      "started_at": "2026-05-13T22:59:00+00:00",
+      "ended_at": "2026-05-13T22:59:00+00:00",
       "duration_ms": 0,
       "artifacts": [
         "artifact_3403b2444a"
@@ -342,8 +342,8 @@
         }
       },
       "status": "success",
-      "started_at": "2026-05-13T22:11:18+00:00",
-      "ended_at": "2026-05-13T22:11:18+00:00",
+      "started_at": "2026-05-13T22:59:00+00:00",
+      "ended_at": "2026-05-13T22:59:00+00:00",
       "duration_ms": 0,
       "artifacts": [
         "artifact_35ff7d754b"
@@ -683,8 +683,8 @@
         ]
       },
       "status": "success",
-      "started_at": "2026-05-13T22:11:18+00:00",
-      "ended_at": "2026-05-13T22:11:18+00:00",
+      "started_at": "2026-05-13T22:59:00+00:00",
+      "ended_at": "2026-05-13T22:59:00+00:00",
       "duration_ms": 0,
       "artifacts": [
         "artifact_240cee50d2"
@@ -787,6 +787,21 @@
       },
       "artifact_id": "artifact_96d3064bd6",
       "sha256": "96d3064bd6aae0535ba68b0a12a208f95ff6e972cdcd72d3c6f74ef1354573b8"
+    },
+    {
+      "kind": "escalation_packet",
+      "uri": "outputs/escalation_packet.json",
+      "summary": "Handoff packet for high-fidelity computation, wet-lab validation, expert review, and feedback ingestion.",
+      "metadata": {
+        "target_systems": [
+          "Bohrium/Lebesgue",
+          "Uni-Lab-OS",
+          "domain_expert",
+          "SciTrace-RL trace store"
+        ]
+      },
+      "artifact_id": "artifact_a84bee9923",
+      "sha256": "a84bee9923880d044e283a2d5c3c4570eba1cb2747e605e34243b07c0cc95859"
     }
   ],
   "validations": [
@@ -909,7 +924,7 @@
   "metrics": {
     "total_tool_calls": 3,
     "successful_tool_calls": 3,
-    "artifact_count": 7,
+    "artifact_count": 8,
     "validation_count": 6,
     "screening_output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
   },

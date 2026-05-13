@@ -35,6 +35,7 @@ class RunnerTests(unittest.TestCase):
             self.assertTrue((out / "trace_to_reward_sample.json").exists())
             self.assertTrue((out / "provenance_bundle.json").exists())
             self.assertTrue((out / "post_training_bundle.json").exists())
+            self.assertTrue((out / "escalation_packet.json").exists())
             provenance = read_json(out / "provenance_bundle.json")
             self.assertEqual(provenance["trace_id"], trace["trace_id"])
             self.assertIn("ro_crate", provenance)
@@ -46,6 +47,13 @@ class RunnerTests(unittest.TestCase):
             self.assertIn("dpo_preference_pair", post_training["formats"])
             self.assertEqual(len(post_training["process_reward_steps"]), trace["metrics"]["total_tool_calls"])
             self.assertEqual(len(post_training["tool_router_records"]), trace["metrics"]["total_tool_calls"])
+            escalation = read_json(out / "escalation_packet.json")
+            self.assertEqual(escalation["recommendation_status"], "provisional")
+            self.assertGreaterEqual(len(escalation["escalation_items"]), 3)
+            self.assertIn(
+                "Bohrium/Lebesgue",
+                {item["target_system"] for item in escalation["escalation_items"]},
+            )
             required = {
                 "citation_integrity",
                 "artifact_replay",

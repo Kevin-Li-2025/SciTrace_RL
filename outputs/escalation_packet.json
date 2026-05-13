@@ -1,0 +1,196 @@
+{
+  "schema_version": "0.1",
+  "trace_id": "trace_70c9dcc044",
+  "task_id": "battery_electrolyte_additive_screen_v1",
+  "recommendation_status": "provisional",
+  "why_not_final": [
+    "Current screening uses deterministic proxy features, not high-fidelity electrochemical simulation.",
+    "No wet-lab protocol, cell format, cycling condition, or safety result has been executed.",
+    "The validation gates can check trace consistency, but cannot replace physical feedback."
+  ],
+  "candidate_under_review": {
+    "candidate_id": "FEC",
+    "name": "Fluoroethylene carbonate",
+    "formula": "C3H3FO3",
+    "screening_score": 0.89
+  },
+  "linked_artifacts": [
+    "artifact_3403b2444a",
+    "artifact_35ff7d754b",
+    "artifact_240cee50d2",
+    "artifact_1a5bdc5afb",
+    "artifact_1a369816ac",
+    "artifact_7a45b3e696",
+    "artifact_96d3064bd6"
+  ],
+  "validation_snapshot": {
+    "citation_integrity": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "artifact_replay": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "constraint_satisfaction": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "claim_evidence_alignment": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "claim_metadata_completeness": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "ai_claim_review": {
+      "status": "skip",
+      "score": 1.0
+    }
+  },
+  "escalation_items": [
+    {
+      "kind": "computational_validation",
+      "target_system": "Bohrium/Lebesgue",
+      "priority": "blocking",
+      "question": "Does the top additive remain favorable under higher-fidelity electrochemical and interfacial checks?",
+      "inputs": {
+        "candidate_id": "FEC",
+        "name": "Fluoroethylene carbonate",
+        "formula": "C3H3FO3",
+        "constraints": {
+          "molecular_weight": {
+            "min": 60,
+            "max": 180
+          },
+          "minimum_screening_score": 0.75,
+          "required_validation_gates": [
+            "citation_integrity",
+            "artifact_replay",
+            "constraint_satisfaction",
+            "claim_evidence_alignment",
+            "claim_metadata_completeness"
+          ]
+        }
+      },
+      "suggested_checks": [
+        "oxidation and reduction stability window",
+        "solvation and Li+ coordination impact",
+        "SEI-forming decomposition pathway plausibility",
+        "gas-generation or impedance-risk screen"
+      ],
+      "acceptance_criteria": [
+        "No hard violation of task constraints after high-fidelity computation.",
+        "Top-ranked candidate keeps a defensible advantage over alternatives.",
+        "Failure modes are written back as structured validation evidence."
+      ],
+      "item_id": "escalation_9f97ebe2a8"
+    },
+    {
+      "kind": "wet_lab_validation",
+      "target_system": "Uni-Lab-OS",
+      "priority": "blocking_before_deployment",
+      "question": "Can the recommendation survive a controlled electrolyte formulation and cell-testing loop?",
+      "inputs": {
+        "candidate_id": "FEC",
+        "name": "Fluoroethylene carbonate",
+        "constraints": {
+          "molecular_weight": {
+            "min": 60,
+            "max": 180
+          },
+          "minimum_screening_score": 0.75,
+          "required_validation_gates": [
+            "citation_integrity",
+            "artifact_replay",
+            "constraint_satisfaction",
+            "claim_evidence_alignment",
+            "claim_metadata_completeness"
+          ]
+        }
+      },
+      "suggested_checks": [
+        "protocol completeness and safety pre-check",
+        "baseline electrolyte comparison",
+        "formation-cycle Coulombic efficiency",
+        "impedance growth after cycling",
+        "gas or swelling observation when relevant"
+      ],
+      "acceptance_criteria": [
+        "Protocol, reagent, and instrument metadata are captured.",
+        "Raw measurements are linked back to the trace as artifacts.",
+        "The result can update the post-training bundle as positive or negative feedback."
+      ],
+      "item_id": "escalation_026716c798"
+    },
+    {
+      "kind": "expert_boundary_review",
+      "target_system": "domain_expert",
+      "priority": "required_for_claim_promotion",
+      "question": "Which claims can be promoted, which must stay provisional, and which require new evidence?",
+      "inputs": {
+        "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
+        "claim_ids": [
+          "claim_top_candidate",
+          "claim_reproducibility"
+        ],
+        "constraints": {
+          "molecular_weight": {
+            "min": 60,
+            "max": 180
+          },
+          "minimum_screening_score": 0.75,
+          "required_validation_gates": [
+            "citation_integrity",
+            "artifact_replay",
+            "constraint_satisfaction",
+            "claim_evidence_alignment",
+            "claim_metadata_completeness"
+          ]
+        }
+      },
+      "suggested_checks": [
+        "claim scope and applicability",
+        "missing operating conditions",
+        "candidate-specific risks not represented in the proxy screen",
+        "whether the next action should be simulation, experiment, or literature expansion"
+      ],
+      "acceptance_criteria": [
+        "Each promoted claim has an explicit evidence or artifact key.",
+        "Each rejected claim has a failure tag.",
+        "Each unresolved claim has a next validation route."
+      ],
+      "item_id": "escalation_ae8747b626"
+    },
+    {
+      "kind": "feedback_ingestion",
+      "target_system": "SciTrace-RL trace store",
+      "priority": "after_external_validation",
+      "question": "How should external simulation, lab, or expert results be converted back into learning signal?",
+      "inputs": {
+        "trace_id": "trace_70c9dcc044",
+        "reward": {
+          "reward": 0.97,
+          "quality_score": 1.0,
+          "cost_penalty": 0.03,
+          "interpretation": "Reward combines validation quality with a small execution-cost penalty.",
+          "training_use": "Can supervise planner/tool-router choices or serve as an offline RL preference label."
+        }
+      },
+      "suggested_checks": [
+        "attach external result artifacts with hashes",
+        "recompute validation gates with external evidence",
+        "update SFT/DPO/process-reward records",
+        "record whether the escalation confirmed, weakened, or overturned the recommendation"
+      ],
+      "acceptance_criteria": [
+        "External results become trace-linked artifacts, not free-text notes.",
+        "Reward and credit assignment are updated from observed outcomes.",
+        "The next run can replay the changed evidence state."
+      ],
+      "item_id": "escalation_51dd766f35"
+    }
+  ],
+  "packet_id": "escalation_packet_3cc6c6a95e"
+}

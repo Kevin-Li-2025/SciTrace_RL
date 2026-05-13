@@ -19,8 +19,9 @@ The demo runs a lightweight dry-lab workflow for lithium-ion battery electrolyte
 5. Optionally run an AI judge over report claims and retrieved evidence.
 6. Export a trace-to-reward sample for future planner/tool-router training.
 7. Export a post-training bundle with SFT, DPO, process-reward, credit-assignment, and tool-router records.
-8. Export an interoperability bundle aligned with W3C PROV, Workflow Run RO-Crate, and OpenTelemetry-style agent spans.
-9. Run a 15-case eval suite with deterministic gates, optional DeepSeek/OpenAI-compatible judging, and explicit expert-review boundaries.
+8. Export an escalation packet for high-fidelity computation, wet-lab validation, expert review, and feedback ingestion.
+9. Export an interoperability bundle aligned with W3C PROV, Workflow Run RO-Crate, and OpenTelemetry-style agent spans.
+10. Run a 15-case eval suite with deterministic gates, optional DeepSeek/OpenAI-compatible judging, and explicit expert-review boundaries.
 
 This is intentionally not presented as a high-fidelity chemistry model. The value is the **infrastructure pattern**: trace schema, tool adapter boundaries, validation gates, artifact replay, and reward generation.
 
@@ -69,6 +70,7 @@ flowchart LR
 │   ├── demo_dashboard.html
 │   ├── demo_report.md
 │   ├── demo_trace.json
+│   ├── escalation_packet.json
 │   ├── post_training_bundle.json
 │   ├── provenance_bundle.json
 │   ├── eval/eval_report.md
@@ -82,6 +84,7 @@ flowchart LR
 │   ├── chemistry.py
 │   ├── cli.py
 │   ├── dashboard.py
+│   ├── escalation.py
 │   ├── eval_suite.py
 │   ├── learning_signal.py
 │   ├── runner.py
@@ -155,6 +158,7 @@ PYTHONPATH=src python3 -m scitrace_rl.eval_suite --out outputs/eval_deepseek
 - `outputs/validation_scorecard.json`: machine-readable validation gates.
 - `outputs/trace_to_reward_sample.json`: one reward-labeled sample for future agent training.
 - `outputs/post_training_bundle.json`: concrete SFT, DPO, process-reward, credit-assignment, and tool-router examples.
+- `outputs/escalation_packet.json`: structured next-step handoff to computation, lab, expert review, and feedback ingestion.
 - `outputs/eval/eval_report.md`: offline 15-case validation report.
 - `outputs/eval_deepseek_v7/eval_report.md`: DeepSeek-backed 15-case validation report from the latest real API run.
 
@@ -168,6 +172,7 @@ The current adapters are intentionally local and deterministic. In a production 
 - Bohrium / Lebesgue compute jobs.
 - Uni-Mol / DPA / Uni-Fold model calls.
 - Uni-Lab-OS wet-lab execution hooks.
+- Human/expert review queues for claim promotion and unresolved scientific boundary conditions.
 - W3C PROV / Workflow Run RO-Crate export for FAIR scientific workflow records.
 - OpenTelemetry GenAI spans for production observability.
 - Offline RL, process-reward modeling, preference data, and tool-router training over validated traces.

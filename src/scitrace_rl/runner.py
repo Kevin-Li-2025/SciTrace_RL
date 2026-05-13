@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import Any
 
 from .dashboard import render_dashboard
+from .escalation import build_escalation_packet
 from .learning_signal import build_post_training_bundle
 from .provenance import build_provenance_bundle
 from .schema import Artifact, Trace
@@ -142,6 +143,21 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
             },
         )
     )
+    escalation_artifact = trace.add_artifact(
+        Artifact(
+            kind="escalation_packet",
+            uri=str(output_dir / "escalation_packet.json"),
+            summary="Handoff packet for high-fidelity computation, wet-lab validation, expert review, and feedback ingestion.",
+            metadata={
+                "target_systems": [
+                    "Bohrium/Lebesgue",
+                    "Uni-Lab-OS",
+                    "domain_expert",
+                    "SciTrace-RL trace store",
+                ]
+            },
+        )
+    )
 
     trace.metrics = {
         "total_tool_calls": len(trace.tools),
@@ -159,6 +175,7 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
     write_json(output_dir / "demo_trace.json", trace_dict)
     write_json(output_dir / "provenance_bundle.json", build_provenance_bundle(trace_dict))
     write_json(output_dir / "post_training_bundle.json", build_post_training_bundle(trace_dict, task, report.result, screening.result))
+    write_json(output_dir / "escalation_packet.json", build_escalation_packet(trace_dict, task, report.result, screening.result))
     render_dashboard(trace_dict, report.result["markdown"], output_dir / "demo_dashboard.html")
     write_json(
         output_dir / "trace_to_reward_sample.json",
@@ -181,6 +198,7 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
                 reward_artifact.artifact_id,
                 provenance_artifact.artifact_id,
                 post_training_artifact.artifact_id,
+                escalation_artifact.artifact_id,
             ],
         },
     )

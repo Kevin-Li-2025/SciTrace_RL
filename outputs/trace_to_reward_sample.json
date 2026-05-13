@@ -1,5 +1,5 @@
 {
-  "trace_id": "trace_051d451555",
+  "trace_id": "trace_70c9dcc044",
   "task_id": "battery_electrolyte_additive_screen_v1",
   "inputs": {
     "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
@@ -37,6 +37,7 @@
     "artifact_1a5bdc5afb",
     "artifact_1a369816ac",
     "artifact_7a45b3e696",
-    "artifact_96d3064bd6"
+    "artifact_96d3064bd6",
+    "artifact_a84bee9923"
   ]
 }

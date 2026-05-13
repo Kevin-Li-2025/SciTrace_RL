@@ -73,6 +73,17 @@ A concrete conversion from one validated run into several training views:
 
 This makes the "trace-to-reward" claim operational. The demo does not only report a scalar reward; it exports data shapes a post-training or evaluation pipeline can consume.
 
+### Escalation Packet
+
+A handoff record for cases where the current evidence is not enough to promote a scientific claim. It contains:
+
+- computational validation tasks for Bohrium/Lebesgue-style jobs,
+- wet-lab validation tasks for Uni-Lab-OS-style execution,
+- expert boundary review tasks for claim promotion,
+- feedback-ingestion instructions for writing external results back into the trace store.
+
+This is how SciTrace-RL avoids pretending that a text or proxy-scoring workflow can finish the science. It turns uncertainty into executable next steps.
+
 ### Provenance Bundle
 
 An interoperability export generated from the same trace. It has three views:
@@ -109,6 +120,7 @@ sequenceDiagram
     Gates-->>Runner: validation scorecard
     Runner->>Store: trace JSON + reward sample + dashboard
     Runner->>Store: post-training bundle
+    Runner->>Store: escalation packet
     Runner->>Store: provenance bundle
 ```
 
@@ -119,8 +131,9 @@ Plain logs tell what happened. SciTrace-RL adds four things:
 1. Structured contracts for tool calls.
 2. Replayable artifacts with hashes.
 3. Validation gates that produce machine-readable pass/fail scores, with optional AI semantic review.
-4. Standards-aware provenance exports for FAIR workflow records and agent observability.
-5. Post-training records for SFT, DPO, process reward modeling, and tool routing.
+4. Escalation packets that route unresolved claims to computation, experiment, or expert review.
+5. Standards-aware provenance exports for FAIR workflow records and agent observability.
+6. Post-training records for SFT, DPO, process reward modeling, and tool routing.
 
 This is the key difference between a demo agent and production AI4S infrastructure.
 
@@ -132,6 +145,7 @@ This is the key difference between a demo agent and production AI4S infrastructu
 | Molecule proxy screen | Bohrium/Lebesgue jobs, Uni-Mol, DPA, quantum chemistry, MD |
 | Local report writer | SciMaster report agent |
 | Validation gates | platform-level governance and scientific evaluation |
+| Escalation packet | Bohrium/Lebesgue, Uni-Lab-OS, expert review queue |
 | JSON trace store | shared trace/event store |
 | Provenance bundle | W3C PROV, Workflow Run RO-Crate, OpenTelemetry traces |
 | Post-training bundle | SFT, DPO, process reward, credit assignment, tool-router data |

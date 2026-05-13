@@ -65,6 +65,17 @@ This project direction is grounded in public signals from DP Technology and the 
   - https://arxiv.org/abs/2502.10325
   - https://arxiv.org/abs/2509.06980
 
+## Human-in-the-Loop and Physical Feedback
+
+- Google's AI co-scientist is positioned as a collaborative system that produces hypotheses, research overviews, and experimental protocols for scientists rather than replacing the scientific process.
+- Scientific hypothesis-generation surveys emphasize simulation, human-AI collaboration, uncertainty quantification, and human-in-the-loop systems for validation in open-world contexts.
+- Embodied Science argues that discovery agents need a closed loop between reasoning, physical execution, and internalized experimental outcomes.
+- SciTrace-RL now exports `escalation_packet.json`, which converts provisional claims into explicit computation, wet-lab, expert-review, and feedback-ingestion tasks.
+- Sources:
+  - https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist/
+  - https://arxiv.org/abs/2505.04651
+  - https://arxiv.org/abs/2603.19782
+
 ## DeepSeek API Validation Layer
 
 - DeepSeek's official API documentation states that its API is OpenAI-compatible.
