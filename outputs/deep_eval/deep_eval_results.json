@@ -1,0 +1,51 @@
+{
+  "adversarial": {
+    "deterministic_detection_rate": 1.0,
+    "ai_semantic_detection_rate": null,
+    "citation_support_detection_rate": 1.0,
+    "semantic_or_support_detection_rate": 1.0,
+    "supported_case_pass_rate": 1.0,
+    "auto_resolvable_coverage": 0.8,
+    "expert_required_case_share": 0.2,
+    "expert_escalation_rate": null,
+    "deterministic_case_count": 5,
+    "semantic_case_count": 6,
+    "expert_required_case_count": 3,
+    "supported_case_count": 1
+  },
+  "stability": {
+    "status": "pass",
+    "runs": 5,
+    "drift_count": 0,
+    "drift": [],
+    "reference": {
+      "run_id": 1,
+      "trace_id": "trace_921fed8b12",
+      "top_candidate_id": "FEC",
+      "screening_output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c",
+      "validation_statuses": {
+        "trajectory_quality": "pass",
+        "citation_integrity": "pass",
+        "citation_support_precision": "pass",
+        "artifact_replay": "pass",
+        "constraint_satisfaction": "pass",
+        "claim_evidence_alignment": "pass",
+        "claim_metadata_completeness": "pass",
+        "ai_claim_review": "skip"
+      },
+      "reward": 0.97,
+      "tool_sequence": [
+        "literature_search",
+        "molecule_screening",
+        "report_writer"
+      ],
+      "report_hash": "c075444b61c3192b3c1afd2011a7a18bb533d7c38818ab077c1d01c8c69c2713"
+    }
+  },
+  "external_ingestion": {
+    "status": "pass",
+    "score": 1.0,
+    "issues": []
+  },
+  "overall_status": "pass"
+}

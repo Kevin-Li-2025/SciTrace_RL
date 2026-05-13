@@ -7,7 +7,13 @@ from typing import Any
 
 from .runner import run_task
 from .utils import read_json, write_json, write_text
-from .validators import validate_ai_claim_review, validate_citations, validate_claim_alignment, validate_claim_metadata
+from .validators import (
+    validate_ai_claim_review,
+    validate_citation_support,
+    validate_citations,
+    validate_claim_alignment,
+    validate_claim_metadata,
+)
 
 
 @dataclass
@@ -229,6 +235,7 @@ def run_eval_suite(task_path: Path, corpus_path: Path, output_dir: Path) -> dict
     for case in cases:
         deterministic = [
             validate_citations(case.report, case.sources),
+            validate_citation_support(case.report, case.sources),
             validate_claim_alignment(case.report, case.screening),
             validate_claim_metadata(case.report),
         ]
@@ -278,6 +285,8 @@ def render_eval_report(summary: dict[str, Any]) -> str:
         "",
         f"- Deterministic detection rate: {summary['metrics']['deterministic_detection_rate']:.3f}",
         f"- AI semantic detection rate: {format_metric(summary['metrics']['ai_semantic_detection_rate'])}",
+        f"- Citation-support detection rate: {summary['metrics']['citation_support_detection_rate']:.3f}",
+        f"- Semantic-or-support detection rate: {summary['metrics']['semantic_or_support_detection_rate']:.3f}",
         f"- Supported-case pass rate: {summary['metrics']['supported_case_pass_rate']:.3f}",
         f"- Auto-resolvable coverage: {summary['metrics']['auto_resolvable_coverage']:.3f}",
         f"- Expert-required case share: {summary['metrics']['expert_required_case_share']:.3f}",
@@ -325,10 +334,19 @@ def compute_metrics(results: list[dict[str, Any]]) -> dict[str, Any]:
     semantic_rate = None
     if any(status != "skip" for status in semantic_ai_statuses):
         semantic_rate = semantic_hits / max(len(semantic_cases), 1)
+    support_eval_cases = semantic_cases + expert_cases
+    support_hits = sum(1 for item in support_eval_cases if validation_status(item, "citation_support_precision") == "fail")
+    semantic_or_support_hits = sum(
+        1
+        for item in semantic_cases
+        if validation_status(item, "citation_support_precision") == "fail"
+        or validation_status(item, "ai_claim_review") in {"warn", "fail"}
+    )
     supported_hits = sum(
         1
         for item in supported_cases
         if validation_status(item, "citation_integrity") == "pass"
+        and validation_status(item, "citation_support_precision") == "pass"
         and validation_status(item, "claim_evidence_alignment") == "pass"
         and validation_status(item, "claim_metadata_completeness") == "pass"
         and validation_status(item, "ai_claim_review") in {"pass", "skip"}
@@ -343,6 +361,8 @@ def compute_metrics(results: list[dict[str, Any]]) -> dict[str, Any]:
     return {
         "deterministic_detection_rate": deterministic_hits / max(len(deterministic_cases), 1),
         "ai_semantic_detection_rate": semantic_rate,
+        "citation_support_detection_rate": support_hits / max(len(support_eval_cases), 1),
+        "semantic_or_support_detection_rate": semantic_or_support_hits / max(len(semantic_cases), 1),
         "supported_case_pass_rate": supported_hits / max(len(supported_cases), 1),
         "auto_resolvable_coverage": auto_resolvable_cases / total_cases,
         "expert_required_case_share": len(expert_cases) / total_cases,

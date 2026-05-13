@@ -28,6 +28,20 @@
           "validation_id": "validation_39abefb5da"
         },
         {
+          "name": "citation_support_precision",
+          "status": "pass",
+          "score": 1.0,
+          "message": "Claim citations are supported by retrieved evidence and linked artifacts.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility"
+            ],
+            "unsupported_claims": []
+          },
+          "validation_id": "validation_d59c60ce4c"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -113,6 +127,20 @@
           "validation_id": "validation_50f62bab96"
         },
         {
+          "name": "citation_support_precision",
+          "status": "pass",
+          "score": 1.0,
+          "message": "Claim citations are supported by retrieved evidence and linked artifacts.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility"
+            ],
+            "unsupported_claims": []
+          },
+          "validation_id": "validation_d59c60ce4c"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -193,6 +221,20 @@
             "missing": []
           },
           "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "citation_support_precision",
+          "status": "pass",
+          "score": 1.0,
+          "message": "Claim citations are supported by retrieved evidence and linked artifacts.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility"
+            ],
+            "unsupported_claims": []
+          },
+          "validation_id": "validation_d59c60ce4c"
         },
         {
           "name": "claim_evidence_alignment",
@@ -277,6 +319,35 @@
           "validation_id": "validation_39abefb5da"
         },
         {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility",
+              "claim_unverified_cycle_life"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_unverified_cycle_life",
+                "missing_sources": [],
+                "unsupported_patterns": [
+                  "quantified_outcome"
+                ],
+                "unsupported_terms": [
+                  "increase",
+                  "least",
+                  "life",
+                  "will"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_5b13f44131"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -359,6 +430,36 @@
           "validation_id": "validation_39abefb5da"
         },
         {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility",
+              "claim_universal_safety"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_universal_safety",
+                "missing_sources": [],
+                "unsupported_patterns": [
+                  "deployment_overclaim"
+                ],
+                "unsupported_terms": [
+                  "deployment",
+                  "ready",
+                  "safe",
+                  "testing",
+                  "universally"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_c80a47a67b"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -435,6 +536,41 @@
             ]
           },
           "validation_id": "validation_e46e645099"
+        },
+        {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.0,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "missing_sources": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "unsupported_patterns": [],
+                "unsupported_terms": [
+                  "carbonate",
+                  "fluoroethylene"
+                ]
+              },
+              {
+                "claim_id": "claim_reproducibility",
+                "missing_sources": [
+                  "agentic_science_infra"
+                ],
+                "unsupported_patterns": [],
+                "unsupported_terms": []
+              }
+            ]
+          },
+          "validation_id": "validation_ddb3355dca"
         },
         {
           "name": "claim_evidence_alignment",
@@ -519,6 +655,38 @@
           "validation_id": "validation_39abefb5da"
         },
         {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility",
+              "claim_sodium_transfer"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_sodium_transfer",
+                "missing_sources": [],
+                "unsupported_patterns": [
+                  "cross_domain_transfer",
+                  "invented_computation"
+                ],
+                "unsupported_terms": [
+                  "batteries",
+                  "equally",
+                  "proven",
+                  "sodium",
+                  "well",
+                  "work"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_6b7a556654"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -599,6 +767,34 @@
             "missing": []
           },
           "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility",
+              "claim_invented_dft_energy"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_invented_dft_energy",
+                "missing_sources": [],
+                "unsupported_patterns": [
+                  "invented_computation"
+                ],
+                "unsupported_terms": [
+                  "computed",
+                  "energy",
+                  "workflow"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_8cbcfb6390"
         },
         {
           "name": "claim_evidence_alignment",
@@ -683,6 +879,35 @@
           "validation_id": "validation_39abefb5da"
         },
         {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility",
+              "claim_wrong_mechanism"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_wrong_mechanism",
+                "missing_sources": [],
+                "unsupported_patterns": [
+                  "wrong_mechanism"
+                ],
+                "unsupported_terms": [
+                  "forms",
+                  "layer",
+                  "rich",
+                  "sulfur"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_47a3ed6aba"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -765,6 +990,30 @@
           "validation_id": "validation_39abefb5da"
         },
         {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.5,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "missing_sources": [],
+                "unsupported_patterns": [],
+                "unsupported_terms": [
+                  "carbonate",
+                  "fluoroethylene"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_a807ca8698"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -843,6 +1092,33 @@
             ]
           },
           "validation_id": "validation_95a2374442"
+        },
+        {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.5,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_top_candidate",
+                "missing_sources": [
+                  "fec_vc_reduction",
+                  "electrolyte_additives_review"
+                ],
+                "unsupported_patterns": [],
+                "unsupported_terms": [
+                  "carbonate",
+                  "fluoroethylene"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_2fc04a4069"
         },
         {
           "name": "claim_evidence_alignment",
@@ -927,6 +1203,32 @@
           "validation_id": "validation_39abefb5da"
         },
         {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility",
+              "claim_deployment_ready"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_deployment_ready",
+                "missing_sources": [],
+                "unsupported_patterns": [],
+                "unsupported_terms": [
+                  "deployment",
+                  "industrial",
+                  "ready"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_9dd0e424d0"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -1007,6 +1309,35 @@
             "missing": []
           },
           "validation_id": "validation_39abefb5da"
+        },
+        {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility",
+              "claim_high_voltage_cell_choice"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_high_voltage_cell_choice",
+                "missing_sources": [],
+                "unsupported_patterns": [],
+                "unsupported_terms": [
+                  "cathode",
+                  "cell",
+                  "nickel",
+                  "over",
+                  "proves",
+                  "selected"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_3f0450ccc1"
         },
         {
           "name": "claim_evidence_alignment",
@@ -1091,6 +1422,37 @@
           "validation_id": "validation_39abefb5da"
         },
         {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility",
+              "claim_wet_lab_protocol_ready"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_wet_lab_protocol_ready",
+                "missing_sources": [],
+                "unsupported_patterns": [],
+                "unsupported_terms": [
+                  "concentration",
+                  "cycling",
+                  "details",
+                  "electrode",
+                  "loading",
+                  "protocol",
+                  "temperature",
+                  "window"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_c0a5f3f684"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -1173,6 +1535,36 @@
           "validation_id": "validation_39abefb5da"
         },
         {
+          "name": "citation_support_precision",
+          "status": "fail",
+          "score": 0.667,
+          "message": "Some claim citations do not support the claim text.",
+          "evidence": {
+            "checked_claim_ids": [
+              "claim_top_candidate",
+              "claim_reproducibility",
+              "claim_tradeoff_resolution"
+            ],
+            "unsupported_claims": [
+              {
+                "claim_id": "claim_tradeoff_resolution",
+                "missing_sources": [],
+                "unsupported_patterns": [],
+                "unsupported_terms": [
+                  "between",
+                  "generation",
+                  "growth",
+                  "impedance",
+                  "long",
+                  "resolves",
+                  "tradeoff"
+                ]
+              }
+            ]
+          },
+          "validation_id": "validation_c17a6d266e"
+        },
+        {
           "name": "claim_evidence_alignment",
           "status": "pass",
           "score": 1.0,
@@ -1232,6 +1624,8 @@
   "metrics": {
     "deterministic_detection_rate": 1.0,
     "ai_semantic_detection_rate": null,
+    "citation_support_detection_rate": 1.0,
+    "semantic_or_support_detection_rate": 1.0,
     "supported_case_pass_rate": 1.0,
     "auto_resolvable_coverage": 0.8,
     "expert_required_case_share": 0.2,

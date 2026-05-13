@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "trace_id": "trace_70c9dcc044",
+  "trace_id": "trace_464593c776",
   "task_id": "battery_electrolyte_additive_screen_v1",
   "recommendation_status": "provisional",
   "why_not_final": [
@@ -18,13 +18,21 @@
     "artifact_3403b2444a",
     "artifact_35ff7d754b",
     "artifact_240cee50d2",
-    "artifact_1a5bdc5afb",
+    "artifact_62d8a395a0",
     "artifact_1a369816ac",
     "artifact_7a45b3e696",
     "artifact_96d3064bd6"
   ],
   "validation_snapshot": {
+    "trajectory_quality": {
+      "status": "pass",
+      "score": 1.0
+    },
     "citation_integrity": {
+      "status": "pass",
+      "score": 1.0
+    },
+    "citation_support_precision": {
       "status": "pass",
       "score": 1.0
     },
@@ -169,7 +177,7 @@
       "priority": "after_external_validation",
       "question": "How should external simulation, lab, or expert results be converted back into learning signal?",
       "inputs": {
-        "trace_id": "trace_70c9dcc044",
+        "trace_id": "trace_464593c776",
         "reward": {
           "reward": 0.97,
           "quality_score": 1.0,
@@ -189,8 +197,8 @@
         "Reward and credit assignment are updated from observed outcomes.",
         "The next run can replay the changed evidence state."
       ],
-      "item_id": "escalation_51dd766f35"
+      "item_id": "escalation_238fcbabea"
     }
   ],
-  "packet_id": "escalation_packet_3cc6c6a95e"
+  "packet_id": "escalation_packet_707088c836"
 }

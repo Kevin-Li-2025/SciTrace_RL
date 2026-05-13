@@ -13,11 +13,13 @@ from .utils import read_json, sha256_json, write_json, write_text
 from .validators import (
     aggregate_reward,
     validate_ai_claim_review,
+    validate_citation_support,
     validate_citations,
     validate_claim_alignment,
     validate_claim_metadata,
     validate_constraints,
     validate_replay,
+    validate_trajectory,
 )
 
 
@@ -68,7 +70,9 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
     report.call.artifacts.append(report_artifact.artifact_id)
 
     validations = [
+        validate_trajectory(trace.tools, trace.artifacts),
         validate_citations(report.result, literature.result["sources"]),
+        validate_citation_support(report.result, literature.result["sources"]),
         validate_replay(task["candidates"], task["constraints"], screening.result),
         validate_constraints(screening.result),
         validate_claim_alignment(report.result, screening.result),
@@ -162,6 +166,11 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
     trace.metrics = {
         "total_tool_calls": len(trace.tools),
         "successful_tool_calls": sum(1 for call in trace.tools if call.status == "success"),
+        "total_duration_ms": sum(call.duration_ms for call in trace.tools),
+        "max_tool_duration_ms": max((call.duration_ms for call in trace.tools), default=0),
+        "avg_tool_duration_ms": round(sum(call.duration_ms for call in trace.tools) / max(len(trace.tools), 1), 3),
+        "tool_duration_ms": {call.name: call.duration_ms for call in trace.tools},
+        "estimated_cost_units": round(len(trace.tools) + len(trace.artifacts) * 0.2, 3),
         "artifact_count": len(trace.artifacts),
         "validation_count": len(trace.validations),
         "screening_output_hash": sha256_json(screening.result),

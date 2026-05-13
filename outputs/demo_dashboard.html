@@ -129,41 +129,35 @@
     <aside>
       <section>
         <h2>Run Metrics</h2>
-        <div class="metric"><span>Trace ID</span><strong>trace_70c9dcc0</strong></div>
+        <div class="metric"><span>Trace ID</span><strong>trace_464593c7</strong></div>
         <div class="metric"><span>Reward</span><strong>0.970</strong></div>
         <div class="metric"><span>Quality</span><strong>1.000</strong></div>
         <div class="metric"><span>Tool Calls</span><strong>3</strong></div>
       </section>
       <section>
         <h2>Tool Timeline</h2>
-        <ul>
-        <li>
+        <ul>        <li>
           <strong>literature_search</strong>
           <span>success</span>
           <code>814055f72291</code>
         </li>
-        
-
         <li>
           <strong>molecule_screening</strong>
           <span>success</span>
           <code>181f373d4e93</code>
         </li>
-        
-
         <li>
           <strong>report_writer</strong>
           <span>success</span>
           <code>385666187c33</code>
-        </li>
-        </ul>
+        </li></ul>
       </section>
       <section>
         <h2>Artifacts</h2>
         <ul><li><strong>retrieved_evidence</strong>: 6 retrieved sources for the task query. <code>3403b2444ab2</code></li>
 <li><strong>ranked_candidates</strong>: Candidate ranking with deterministic proxy chemistry features. <code>35ff7d754bc8</code></li>
 <li><strong>agent_report</strong>: Citation-grounded candidate report generated from trace artifacts. <code>240cee50d283</code></li>
-<li><strong>validation_scorecard</strong>: Machine-readable validation gates for the scientific-agent run. <code>1a5bdc5afb95</code></li>
+<li><strong>validation_scorecard</strong>: Machine-readable validation gates for the scientific-agent run. <code>62d8a395a0ba</code></li>
 <li><strong>trace_to_reward_sample</strong>: Reward-labeled training sample derived from the validated execution trace. <code>1a369816ac59</code></li>
 <li><strong>provenance_bundle</strong>: Interoperability export aligned with W3C PROV, Workflow Run RO-Crate, and OpenTelemetry spans. <code>7a45b3e69697</code></li>
 <li><strong>post_training_bundle</strong>: SFT, DPO, process-reward, credit-assignment, and tool-router records derived from the run. <code>96d3064bd6aa</code></li>
@@ -175,54 +169,54 @@
         <h2>Validation Scorecard</h2>
         <table>
           <thead><tr><th>Gate</th><th>Status</th><th>Score</th><th>Message</th></tr></thead>
-          <tbody>
+          <tbody>        <tr>
+          <td>trajectory_quality</td>
+          <td><span class="pill pass">pass</span></td>
+          <td>1.000</td>
+          <td>Tool sequence, outputs, durations, and artifact links are valid.</td>
+        </tr>
         <tr>
           <td>citation_integrity</td>
           <td><span class="pill pass">pass</span></td>
           <td>1.000</td>
           <td>All report citations resolve to retrieved evidence.</td>
         </tr>
-        
-
+        <tr>
+          <td>citation_support_precision</td>
+          <td><span class="pill pass">pass</span></td>
+          <td>1.000</td>
+          <td>Claim citations are supported by retrieved evidence and linked artifacts.</td>
+        </tr>
         <tr>
           <td>artifact_replay</td>
           <td><span class="pill pass">pass</span></td>
           <td>1.000</td>
           <td>Screening output is deterministic and replayable.</td>
         </tr>
-        
-
         <tr>
           <td>constraint_satisfaction</td>
           <td><span class="pill pass">pass</span></td>
           <td>1.000</td>
           <td>Top candidate satisfies lightweight design constraints.</td>
         </tr>
-        
-
         <tr>
           <td>claim_evidence_alignment</td>
           <td><span class="pill pass">pass</span></td>
           <td>1.000</td>
           <td>The top-candidate claim is grounded in the ranked artifact.</td>
         </tr>
-        
-
         <tr>
           <td>claim_metadata_completeness</td>
           <td><span class="pill pass">pass</span></td>
           <td>1.000</td>
           <td>All claims include source ids and artifact keys.</td>
         </tr>
-        
-
         <tr>
           <td>ai_claim_review</td>
           <td><span class="pill skip">skip</span></td>
           <td>1.000</td>
           <td>Optional AI judge disabled. Set SCITRACE_AI_JUDGE=1 and OPENAI_API_KEY to enable.</td>
-        </tr>
-        </tbody>
+        </tr></tbody>
         </table>
       </section>
       <section>

@@ -1,5 +1,30 @@
 [
   {
+    "name": "trajectory_quality",
+    "status": "pass",
+    "score": 1.0,
+    "message": "Tool sequence, outputs, durations, and artifact links are valid.",
+    "evidence": {
+      "expected_sequence": [
+        "literature_search",
+        "molecule_screening",
+        "report_writer"
+      ],
+      "actual_sequence": [
+        "literature_search",
+        "molecule_screening",
+        "report_writer"
+      ],
+      "issues": [],
+      "artifact_ids": [
+        "artifact_240cee50d2",
+        "artifact_3403b2444a",
+        "artifact_35ff7d754b"
+      ]
+    },
+    "validation_id": "validation_0a5e022cfe"
+  },
+  {
     "name": "citation_integrity",
     "status": "pass",
     "score": 1.0,
@@ -22,6 +47,20 @@
       "missing": []
     },
     "validation_id": "validation_4323602cf3"
+  },
+  {
+    "name": "citation_support_precision",
+    "status": "pass",
+    "score": 1.0,
+    "message": "Claim citations are supported by retrieved evidence and linked artifacts.",
+    "evidence": {
+      "checked_claim_ids": [
+        "claim_top_candidate",
+        "claim_reproducibility"
+      ],
+      "unsupported_claims": []
+    },
+    "validation_id": "validation_d59c60ce4c"
   },
   {
     "name": "artifact_replay",

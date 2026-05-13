@@ -2,8 +2,8 @@
   "task_id": "battery_electrolyte_additive_screen_v1",
   "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
   "domain": "materials_science.battery_electrolyte",
-  "created_at": "2026-05-13T22:59:00+00:00",
-  "trace_id": "trace_70c9dcc044",
+  "created_at": "2026-05-13T23:20:28+00:00",
+  "trace_id": "trace_464593c776",
   "tools": [
     {
       "name": "literature_search",
@@ -140,8 +140,8 @@
         }
       },
       "status": "success",
-      "started_at": "2026-05-13T22:59:00+00:00",
-      "ended_at": "2026-05-13T22:59:00+00:00",
+      "started_at": "2026-05-13T23:20:28+00:00",
+      "ended_at": "2026-05-13T23:20:28+00:00",
       "duration_ms": 0,
       "artifacts": [
         "artifact_3403b2444a"
@@ -342,8 +342,8 @@
         }
       },
       "status": "success",
-      "started_at": "2026-05-13T22:59:00+00:00",
-      "ended_at": "2026-05-13T22:59:00+00:00",
+      "started_at": "2026-05-13T23:20:28+00:00",
+      "ended_at": "2026-05-13T23:20:28+00:00",
       "duration_ms": 0,
       "artifacts": [
         "artifact_35ff7d754b"
@@ -683,8 +683,8 @@
         ]
       },
       "status": "success",
-      "started_at": "2026-05-13T22:59:00+00:00",
-      "ended_at": "2026-05-13T22:59:00+00:00",
+      "started_at": "2026-05-13T23:20:28+00:00",
+      "ended_at": "2026-05-13T23:20:28+00:00",
       "duration_ms": 0,
       "artifacts": [
         "artifact_240cee50d2"
@@ -737,7 +737,9 @@
       "summary": "Machine-readable validation gates for the scientific-agent run.",
       "metadata": {
         "validation_names": [
+          "trajectory_quality",
           "citation_integrity",
+          "citation_support_precision",
           "artifact_replay",
           "constraint_satisfaction",
           "claim_evidence_alignment",
@@ -745,8 +747,8 @@
           "ai_claim_review"
         ]
       },
-      "artifact_id": "artifact_1a5bdc5afb",
-      "sha256": "1a5bdc5afb95b360f0853fe6a3fae21f2932f9d78eba4eaa9d6584f5baad939c"
+      "artifact_id": "artifact_62d8a395a0",
+      "sha256": "62d8a395a0baea2189f48290f000533bd9dc4530a8144b75265799ddadd0ef01"
     },
     {
       "kind": "trace_to_reward_sample",
@@ -806,6 +808,31 @@
   ],
   "validations": [
     {
+      "name": "trajectory_quality",
+      "status": "pass",
+      "score": 1.0,
+      "message": "Tool sequence, outputs, durations, and artifact links are valid.",
+      "evidence": {
+        "expected_sequence": [
+          "literature_search",
+          "molecule_screening",
+          "report_writer"
+        ],
+        "actual_sequence": [
+          "literature_search",
+          "molecule_screening",
+          "report_writer"
+        ],
+        "issues": [],
+        "artifact_ids": [
+          "artifact_240cee50d2",
+          "artifact_3403b2444a",
+          "artifact_35ff7d754b"
+        ]
+      },
+      "validation_id": "validation_0a5e022cfe"
+    },
+    {
       "name": "citation_integrity",
       "status": "pass",
       "score": 1.0,
@@ -828,6 +855,20 @@
         "missing": []
       },
       "validation_id": "validation_4323602cf3"
+    },
+    {
+      "name": "citation_support_precision",
+      "status": "pass",
+      "score": 1.0,
+      "message": "Claim citations are supported by retrieved evidence and linked artifacts.",
+      "evidence": {
+        "checked_claim_ids": [
+          "claim_top_candidate",
+          "claim_reproducibility"
+        ],
+        "unsupported_claims": []
+      },
+      "validation_id": "validation_d59c60ce4c"
     },
     {
       "name": "artifact_replay",
@@ -924,8 +965,17 @@
   "metrics": {
     "total_tool_calls": 3,
     "successful_tool_calls": 3,
+    "total_duration_ms": 0,
+    "max_tool_duration_ms": 0,
+    "avg_tool_duration_ms": 0.0,
+    "tool_duration_ms": {
+      "literature_search": 0,
+      "molecule_screening": 0,
+      "report_writer": 0
+    },
+    "estimated_cost_units": 4.6,
     "artifact_count": 8,
-    "validation_count": 6,
+    "validation_count": 8,
     "screening_output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
   },
   "reward": {

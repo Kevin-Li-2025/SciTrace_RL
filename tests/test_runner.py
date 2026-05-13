@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 from scitrace_rl.chemistry import formula_stats
+from scitrace_rl.deep_eval import run_deep_eval
 from scitrace_rl.eval_suite import run_eval_suite
 from scitrace_rl.utils import read_json
 from scitrace_rl.runner import run_task
@@ -30,6 +31,8 @@ class RunnerTests(unittest.TestCase):
                 out,
             )
             self.assertEqual(trace["metrics"]["total_tool_calls"], 3)
+            self.assertIn("total_duration_ms", trace["metrics"])
+            self.assertIn("estimated_cost_units", trace["metrics"])
             self.assertGreaterEqual(trace["reward"]["reward"], 0.9)
             self.assertTrue((out / "demo_trace.json").exists())
             self.assertTrue((out / "trace_to_reward_sample.json").exists())
@@ -55,7 +58,9 @@ class RunnerTests(unittest.TestCase):
                 {item["target_system"] for item in escalation["escalation_items"]},
             )
             required = {
+                "trajectory_quality",
                 "citation_integrity",
+                "citation_support_precision",
                 "artifact_replay",
                 "constraint_satisfaction",
                 "claim_evidence_alignment",
@@ -78,8 +83,23 @@ class RunnerTests(unittest.TestCase):
             self.assertEqual(fabricated["name"], "citation_integrity")
             self.assertEqual(fabricated["status"], "fail")
             self.assertEqual(summary["metrics"]["deterministic_detection_rate"], 1.0)
+            self.assertEqual(summary["metrics"]["citation_support_detection_rate"], 1.0)
+            self.assertEqual(summary["metrics"]["semantic_or_support_detection_rate"], 1.0)
             self.assertLess(summary["metrics"]["auto_resolvable_coverage"], 1.0)
             self.assertGreater(summary["metrics"]["expert_required_case_share"], 0.0)
+
+    def test_deep_eval_covers_stability_and_external_feedback(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            summary = run_deep_eval(
+                ROOT / "data/tasks/electrolyte_additive_screen.json",
+                ROOT / "data/corpus/scientific_sources.json",
+                Path(temp_dir),
+                stability_runs=3,
+            )
+            self.assertEqual(summary["overall_status"], "pass")
+            self.assertEqual(summary["stability"]["status"], "pass")
+            self.assertEqual(summary["stability"]["drift_count"], 0)
+            self.assertEqual(summary["external_ingestion"]["status"], "pass")
 
 
 if __name__ == "__main__":

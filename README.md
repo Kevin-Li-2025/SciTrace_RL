@@ -22,6 +22,7 @@ The demo runs a lightweight dry-lab workflow for lithium-ion battery electrolyte
 8. Export an escalation packet for high-fidelity computation, wet-lab validation, expert review, and feedback ingestion.
 9. Export an interoperability bundle aligned with W3C PROV, Workflow Run RO-Crate, and OpenTelemetry-style agent spans.
 10. Run a 15-case eval suite with deterministic gates, optional DeepSeek/OpenAI-compatible judging, and explicit expert-review boundaries.
+11. Run deep evaluation for trajectory quality, citation support precision, multi-run stability, cost/latency, and external-result ingestion.
 
 This is intentionally not presented as a high-fidelity chemistry model. The value is the **infrastructure pattern**: trace schema, tool adapter boundaries, validation gates, artifact replay, and reward generation.
 
@@ -74,6 +75,7 @@ flowchart LR
 │   ├── post_training_bundle.json
 │   ├── provenance_bundle.json
 │   ├── eval/eval_report.md
+│   ├── deep_eval/deep_eval_report.md
 │   ├── eval_deepseek_v7/eval_report.md
 │   ├── ranked_candidates.json
 │   ├── retrieved_sources.json
@@ -84,8 +86,10 @@ flowchart LR
 │   ├── chemistry.py
 │   ├── cli.py
 │   ├── dashboard.py
+│   ├── deep_eval.py
 │   ├── escalation.py
 │   ├── eval_suite.py
+│   ├── external_feedback.py
 │   ├── learning_signal.py
 │   ├── runner.py
 │   ├── schema.py
@@ -129,6 +133,12 @@ Run the eval suite:
 PYTHONPATH=src python3 -m scitrace_rl.eval_suite --out outputs/eval
 ```
 
+Run the deep eval suite:
+
+```bash
+PYTHONPATH=src python3 -m scitrace_rl.deep_eval --out outputs/deep_eval --stability-runs 5
+```
+
 Optional DeepSeek AI judge:
 
 ```bash
@@ -160,6 +170,7 @@ PYTHONPATH=src python3 -m scitrace_rl.eval_suite --out outputs/eval_deepseek
 - `outputs/post_training_bundle.json`: concrete SFT, DPO, process-reward, credit-assignment, and tool-router examples.
 - `outputs/escalation_packet.json`: structured next-step handoff to computation, lab, expert review, and feedback ingestion.
 - `outputs/eval/eval_report.md`: offline 15-case validation report.
+- `outputs/deep_eval/deep_eval_report.md`: trajectory, citation-support, multi-run stability, and external-ingestion evaluation.
 - `outputs/eval_deepseek_v7/eval_report.md`: DeepSeek-backed 15-case validation report from the latest real API run.
 
 By default the `ai_claim_review` gate is marked `skip`, so the demo remains reproducible without external API access. When enabled, the AI judge reviews whether generated claims are supported by retrieved evidence.

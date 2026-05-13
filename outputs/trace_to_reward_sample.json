@@ -1,5 +1,5 @@
 {
-  "trace_id": "trace_70c9dcc044",
+  "trace_id": "trace_464593c776",
   "task_id": "battery_electrolyte_additive_screen_v1",
   "inputs": {
     "goal": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
@@ -15,7 +15,9 @@
     "report_writer"
   ],
   "validation_scores": {
+    "trajectory_quality": 1.0,
     "citation_integrity": 1.0,
+    "citation_support_precision": 1.0,
     "artifact_replay": 1.0,
     "constraint_satisfaction": 1.0,
     "claim_evidence_alignment": 1.0,
@@ -34,7 +36,7 @@
     "artifact_3403b2444a",
     "artifact_35ff7d754b",
     "artifact_240cee50d2",
-    "artifact_1a5bdc5afb",
+    "artifact_62d8a395a0",
     "artifact_1a369816ac",
     "artifact_7a45b3e696",
     "artifact_96d3064bd6",

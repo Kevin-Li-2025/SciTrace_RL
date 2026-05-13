@@ -55,6 +55,12 @@ PYTHONPATH=src python3 -m scitrace_rl.eval_suite --out outputs/eval
 
 With DeepSeek enabled, the same command produces a model-backed semantic validation report.
 
+Run the deep eval suite:
+
+```bash
+PYTHONPATH=src python3 -m scitrace_rl.deep_eval --out outputs/deep_eval --stability-runs 5
+```
+
 ## What The Reviewer Should Notice
 
 1. The project is not a generic chatbot demo. It is infrastructure for scientific agents.
@@ -64,8 +70,9 @@ With DeepSeek enabled, the same command produces a model-backed semantic validat
 5. The reward sample shows how execution traces can become training data.
 6. The post-training bundle makes that training data concrete: SFT, DPO, process rewards, credit assignment, and tool-router examples.
 7. The escalation packet turns uncertain scientific conclusions into explicit computation, experiment, expert-review, and feedback-ingestion tasks.
-8. The provenance bundle shows how the same run can be mapped to W3C PROV, Workflow Run RO-Crate, and OpenTelemetry-style spans.
-9. The optional `ai_claim_review` gate shows how a real AI API can be used as an extra semantic judge without making the demo fragile.
+8. The deep eval suite checks trajectory quality, citation support precision, multi-run stability, cost/latency metrics, and external-result ingestion.
+9. The provenance bundle shows how the same run can be mapped to W3C PROV, Workflow Run RO-Crate, and OpenTelemetry-style spans.
+10. The optional `ai_claim_review` gate shows how a real AI API can be used as an extra semantic judge without making the demo fragile.
 
 ## Demo Scenario
 
@@ -94,6 +101,7 @@ The default run recommends fluoroethylene carbonate as the top candidate and pro
 - `outputs/escalation_packet.json` as the handoff plan for external validation
 - `outputs/provenance_bundle.json` as standards-aware provenance and observability output
 - `outputs/eval/eval_report.md` as the offline adversarial validation report
+- `outputs/deep_eval/deep_eval_report.md` as the deeper stability and feedback-ingestion report
 - `outputs/eval_deepseek_v7/eval_report.md` as the latest real DeepSeek-backed validation report
 
 ## How To Explain The Demo In An Interview

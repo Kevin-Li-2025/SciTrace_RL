@@ -9,24 +9,20 @@ from .utils import write_text
 
 def render_dashboard(trace: dict[str, Any], report_markdown: str, path: Path) -> None:
     validations = "\n".join(
-        f"""
-        <tr>
+        f"""        <tr>
           <td>{escape(item['name'])}</td>
           <td><span class="pill {escape(item['status'])}">{escape(item['status'])}</span></td>
           <td>{item['score']:.3f}</td>
           <td>{escape(item['message'])}</td>
-        </tr>
-        """
+        </tr>"""
         for item in trace["validations"]
     )
     tools = "\n".join(
-        f"""
-        <li>
+        f"""        <li>
           <strong>{escape(tool['name'])}</strong>
           <span>{escape(tool['status'])}</span>
           <code>{escape(tool['output_hash'][:12])}</code>
-        </li>
-        """
+        </li>"""
         for tool in trace["tools"]
     )
     artifacts = "\n".join(

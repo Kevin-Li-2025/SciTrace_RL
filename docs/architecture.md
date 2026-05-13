@@ -84,6 +84,16 @@ A handoff record for cases where the current evidence is not enough to promote a
 
 This is how SciTrace-RL avoids pretending that a text or proxy-scoring workflow can finish the science. It turns uncertainty into executable next steps.
 
+### Deep Evaluation
+
+The deeper evaluator checks the infrastructure itself:
+
+- trajectory quality: tool order, output contracts, artifact links, and duration sanity,
+- citation support precision: whether cited evidence actually supports claim text,
+- multi-run stability: repeated runs must keep the same top candidate, report hash, validation statuses, reward, and tool sequence,
+- cost/latency metrics: tool durations, total duration, and estimated execution cost units,
+- external-result ingestion: a simulated external contradiction must update reward, close an escalation item, and create post-training updates.
+
 ### Provenance Bundle
 
 An interoperability export generated from the same trace. It has three views:

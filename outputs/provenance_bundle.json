@@ -1,6 +1,6 @@
 {
   "schema_version": "0.2",
-  "trace_id": "trace_70c9dcc044",
+  "trace_id": "trace_464593c776",
   "standards_alignment": [
     {
       "name": "W3C PROV",
@@ -34,7 +34,7 @@
       {
         "@id": "./",
         "@type": "Dataset",
-        "name": "SciTrace-RL run trace_70c9dcc044",
+        "name": "SciTrace-RL run trace_464593c776",
         "description": "Screen a small set of lithium-ion battery electrolyte additive candidates and produce a traceable, citation-grounded recommendation for the next validation loop.",
         "conformsTo": [
           {
@@ -52,7 +52,7 @@
             "@id": "#artifact/artifact_240cee50d2"
           },
           {
-            "@id": "#artifact/artifact_1a5bdc5afb"
+            "@id": "#artifact/artifact_62d8a395a0"
           },
           {
             "@id": "#artifact/artifact_1a369816ac"
@@ -68,15 +68,15 @@
           }
         ],
         "mainEntity": {
-          "@id": "#trace/trace_70c9dcc044"
+          "@id": "#trace/trace_464593c776"
         }
       },
       {
-        "@id": "#trace/trace_70c9dcc044",
+        "@id": "#trace/trace_464593c776",
         "@type": "Dataset",
-        "identifier": "trace_70c9dcc044",
+        "identifier": "trace_464593c776",
         "name": "SciTrace-RL execution trace",
-        "dateCreated": "2026-05-13T22:59:00+00:00",
+        "dateCreated": "2026-05-13T23:20:28+00:00",
         "about": {
           "@id": "#task/battery_electrolyte_additive_screen_v1"
         }
@@ -153,20 +153,22 @@
         ]
       },
       {
-        "@id": "#artifact/artifact_1a5bdc5afb",
+        "@id": "#artifact/artifact_62d8a395a0",
         "@type": "DigitalDocument",
-        "identifier": "artifact_1a5bdc5afb",
+        "identifier": "artifact_62d8a395a0",
         "name": "validation_scorecard",
         "description": "Machine-readable validation gates for the scientific-agent run.",
         "contentUrl": "outputs/validation_scorecard.json",
-        "sha256": "1a5bdc5afb95b360f0853fe6a3fae21f2932f9d78eba4eaa9d6584f5baad939c",
+        "sha256": "62d8a395a0baea2189f48290f000533bd9dc4530a8144b75265799ddadd0ef01",
         "additionalType": "validation_scorecard",
         "additionalProperty": [
           {
             "@type": "PropertyValue",
             "name": "validation_names",
             "value": [
+              "trajectory_quality",
               "citation_integrity",
+              "citation_support_precision",
               "artifact_replay",
               "constraint_satisfaction",
               "claim_evidence_alignment",
@@ -282,8 +284,8 @@
             "@id": "#artifact/artifact_3403b2444a"
           }
         ],
-        "startTime": "2026-05-13T22:59:00+00:00",
-        "endTime": "2026-05-13T22:59:00+00:00",
+        "startTime": "2026-05-13T23:20:28+00:00",
+        "endTime": "2026-05-13T23:20:28+00:00",
         "actionStatus": "success",
         "additionalProperty": [
           {
@@ -326,8 +328,8 @@
             "@id": "#artifact/artifact_35ff7d754b"
           }
         ],
-        "startTime": "2026-05-13T22:59:00+00:00",
-        "endTime": "2026-05-13T22:59:00+00:00",
+        "startTime": "2026-05-13T23:20:28+00:00",
+        "endTime": "2026-05-13T23:20:28+00:00",
         "actionStatus": "success",
         "additionalProperty": [
           {
@@ -370,8 +372,8 @@
             "@id": "#artifact/artifact_240cee50d2"
           }
         ],
-        "startTime": "2026-05-13T22:59:00+00:00",
-        "endTime": "2026-05-13T22:59:00+00:00",
+        "startTime": "2026-05-13T23:20:28+00:00",
+        "endTime": "2026-05-13T23:20:28+00:00",
         "actionStatus": "success",
         "additionalProperty": [
           {
@@ -392,6 +394,58 @@
         ]
       },
       {
+        "@id": "#validation/validation_0a5e022cfe",
+        "@type": "AssessAction",
+        "name": "trajectory_quality",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "object": {
+          "@id": "#trace/trace_464593c776"
+        },
+        "actionStatus": "pass",
+        "result": {
+          "@type": "PropertyValue",
+          "name": "score",
+          "value": 1.0
+        },
+        "description": "Tool sequence, outputs, durations, and artifact links are valid.",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "actual_sequence",
+            "value": [
+              "literature_search",
+              "molecule_screening",
+              "report_writer"
+            ]
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "artifact_ids",
+            "value": [
+              "artifact_240cee50d2",
+              "artifact_3403b2444a",
+              "artifact_35ff7d754b"
+            ]
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "expected_sequence",
+            "value": [
+              "literature_search",
+              "molecule_screening",
+              "report_writer"
+            ]
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "issues",
+            "value": []
+          }
+        ]
+      },
+      {
         "@id": "#validation/validation_4323602cf3",
         "@type": "AssessAction",
         "name": "citation_integrity",
@@ -399,7 +453,7 @@
           "@id": "#agent/scitrace-rl"
         },
         "object": {
-          "@id": "#trace/trace_70c9dcc044"
+          "@id": "#trace/trace_464593c776"
         },
         "actionStatus": "pass",
         "result": {
@@ -439,6 +493,39 @@
         ]
       },
       {
+        "@id": "#validation/validation_d59c60ce4c",
+        "@type": "AssessAction",
+        "name": "citation_support_precision",
+        "agent": {
+          "@id": "#agent/scitrace-rl"
+        },
+        "object": {
+          "@id": "#trace/trace_464593c776"
+        },
+        "actionStatus": "pass",
+        "result": {
+          "@type": "PropertyValue",
+          "name": "score",
+          "value": 1.0
+        },
+        "description": "Claim citations are supported by retrieved evidence and linked artifacts.",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "checked_claim_ids",
+            "value": [
+              "claim_top_candidate",
+              "claim_reproducibility"
+            ]
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "unsupported_claims",
+            "value": []
+          }
+        ]
+      },
+      {
         "@id": "#validation/validation_858bcdce31",
         "@type": "AssessAction",
         "name": "artifact_replay",
@@ -446,7 +533,7 @@
           "@id": "#agent/scitrace-rl"
         },
         "object": {
-          "@id": "#trace/trace_70c9dcc044"
+          "@id": "#trace/trace_464593c776"
         },
         "actionStatus": "pass",
         "result": {
@@ -476,7 +563,7 @@
           "@id": "#agent/scitrace-rl"
         },
         "object": {
-          "@id": "#trace/trace_70c9dcc044"
+          "@id": "#trace/trace_464593c776"
         },
         "actionStatus": "pass",
         "result": {
@@ -529,7 +616,7 @@
           "@id": "#agent/scitrace-rl"
         },
         "object": {
-          "@id": "#trace/trace_70c9dcc044"
+          "@id": "#trace/trace_464593c776"
         },
         "actionStatus": "pass",
         "result": {
@@ -587,7 +674,7 @@
           "@id": "#agent/scitrace-rl"
         },
         "object": {
-          "@id": "#trace/trace_70c9dcc044"
+          "@id": "#trace/trace_464593c776"
         },
         "actionStatus": "pass",
         "result": {
@@ -622,7 +709,7 @@
           "@id": "#agent/scitrace-rl"
         },
         "object": {
-          "@id": "#trace/trace_70c9dcc044"
+          "@id": "#trace/trace_464593c776"
         },
         "actionStatus": "skip",
         "result": {
@@ -672,7 +759,7 @@
       "scitrace": "https://example.org/scitrace#"
     },
     "entity": {
-      "#trace/trace_70c9dcc044": {
+      "#trace/trace_464593c776": {
         "prov:type": "scitrace:Trace",
         "scitrace:task_id": "battery_electrolyte_additive_screen_v1",
         "scitrace:domain": "materials_science.battery_electrolyte"
@@ -699,11 +786,11 @@
         "scitrace:uri": "outputs/demo_report.md",
         "scitrace:sha256": "240cee50d283eb0851ad00360c8e184ca8335b4c6090b440bc34a250fb3f967c"
       },
-      "#artifact/artifact_1a5bdc5afb": {
+      "#artifact/artifact_62d8a395a0": {
         "prov:type": "scitrace:Artifact",
         "scitrace:kind": "validation_scorecard",
         "scitrace:uri": "outputs/validation_scorecard.json",
-        "scitrace:sha256": "1a5bdc5afb95b360f0853fe6a3fae21f2932f9d78eba4eaa9d6584f5baad939c"
+        "scitrace:sha256": "62d8a395a0baea2189f48290f000533bd9dc4530a8144b75265799ddadd0ef01"
       },
       "#artifact/artifact_1a369816ac": {
         "prov:type": "scitrace:Artifact",
@@ -733,33 +820,45 @@
     "activity": {
       "#tool-call/call_4905ffe7ea": {
         "prov:type": "scitrace:ToolCall",
-        "prov:startedAtTime": "2026-05-13T22:59:00+00:00",
-        "prov:endedAtTime": "2026-05-13T22:59:00+00:00",
+        "prov:startedAtTime": "2026-05-13T23:20:28+00:00",
+        "prov:endedAtTime": "2026-05-13T23:20:28+00:00",
         "scitrace:tool": "literature_search",
         "scitrace:status": "success",
         "scitrace:output_hash": "814055f722919c1d988ec39ed5bc5ba9037c797701e394489681969f57370ec6"
       },
       "#tool-call/call_b2022c85b7": {
         "prov:type": "scitrace:ToolCall",
-        "prov:startedAtTime": "2026-05-13T22:59:00+00:00",
-        "prov:endedAtTime": "2026-05-13T22:59:00+00:00",
+        "prov:startedAtTime": "2026-05-13T23:20:28+00:00",
+        "prov:endedAtTime": "2026-05-13T23:20:28+00:00",
         "scitrace:tool": "molecule_screening",
         "scitrace:status": "success",
         "scitrace:output_hash": "181f373d4e93090d68cd4651f1833f8936dac4522ccd4a1068a7b4d83742e20c"
       },
       "#tool-call/call_4521db387b": {
         "prov:type": "scitrace:ToolCall",
-        "prov:startedAtTime": "2026-05-13T22:59:00+00:00",
-        "prov:endedAtTime": "2026-05-13T22:59:00+00:00",
+        "prov:startedAtTime": "2026-05-13T23:20:28+00:00",
+        "prov:endedAtTime": "2026-05-13T23:20:28+00:00",
         "scitrace:tool": "report_writer",
         "scitrace:status": "success",
         "scitrace:output_hash": "385666187c338aa14e0e9130168075094172d7fdbc0cf155afcc92a2682eaefb"
+      },
+      "#validation/validation_0a5e022cfe": {
+        "prov:type": "scitrace:ValidationGate",
+        "scitrace:status": "pass",
+        "scitrace:score": 1.0,
+        "scitrace:message": "Tool sequence, outputs, durations, and artifact links are valid."
       },
       "#validation/validation_4323602cf3": {
         "prov:type": "scitrace:ValidationGate",
         "scitrace:status": "pass",
         "scitrace:score": 1.0,
         "scitrace:message": "All report citations resolve to retrieved evidence."
+      },
+      "#validation/validation_d59c60ce4c": {
+        "prov:type": "scitrace:ValidationGate",
+        "scitrace:status": "pass",
+        "scitrace:score": 1.0,
+        "scitrace:message": "Claim citations are supported by retrieved evidence and linked artifacts."
       },
       "#validation/validation_858bcdce31": {
         "prov:type": "scitrace:ValidationGate",
@@ -812,28 +911,36 @@
         "prov:entity": "#task/battery_electrolyte_additive_screen_v1"
       },
       {
+        "prov:activity": "#validation/validation_0a5e022cfe",
+        "prov:entity": "#trace/trace_464593c776"
+      },
+      {
         "prov:activity": "#validation/validation_4323602cf3",
-        "prov:entity": "#trace/trace_70c9dcc044"
+        "prov:entity": "#trace/trace_464593c776"
+      },
+      {
+        "prov:activity": "#validation/validation_d59c60ce4c",
+        "prov:entity": "#trace/trace_464593c776"
       },
       {
         "prov:activity": "#validation/validation_858bcdce31",
-        "prov:entity": "#trace/trace_70c9dcc044"
+        "prov:entity": "#trace/trace_464593c776"
       },
       {
         "prov:activity": "#validation/validation_f534f53950",
-        "prov:entity": "#trace/trace_70c9dcc044"
+        "prov:entity": "#trace/trace_464593c776"
       },
       {
         "prov:activity": "#validation/validation_7f4fe4d471",
-        "prov:entity": "#trace/trace_70c9dcc044"
+        "prov:entity": "#trace/trace_464593c776"
       },
       {
         "prov:activity": "#validation/validation_b63c303089",
-        "prov:entity": "#trace/trace_70c9dcc044"
+        "prov:entity": "#trace/trace_464593c776"
       },
       {
         "prov:activity": "#validation/validation_67f8129e07",
-        "prov:entity": "#trace/trace_70c9dcc044"
+        "prov:entity": "#trace/trace_464593c776"
       }
     ],
     "wasGeneratedBy": [
@@ -864,7 +971,15 @@
         "prov:agent": "#agent/scitrace-rl"
       },
       {
+        "prov:activity": "#validation/validation_0a5e022cfe",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
         "prov:activity": "#validation/validation_4323602cf3",
+        "prov:agent": "#agent/scitrace-rl"
+      },
+      {
+        "prov:activity": "#validation/validation_d59c60ce4c",
         "prov:agent": "#agent/scitrace-rl"
       },
       {
@@ -890,32 +1005,32 @@
     ]
   },
   "otel": {
-    "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+    "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
     "spans": [
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
-        "span_id": "62f5489c70f2f77b",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
+        "span_id": "7c96ef4557e1f7e4",
         "parent_span_id": null,
         "name": "scitrace.workflow",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "gen_ai.operation.name": "invoke_agent",
-          "scitrace.trace_id": "trace_70c9dcc044",
+          "scitrace.trace_id": "trace_464593c776",
           "scitrace.task_id": "battery_electrolyte_additive_screen_v1",
           "scitrace.domain": "materials_science.battery_electrolyte",
           "scitrace.reward": 0.97
         }
       },
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
         "span_id": "e72720ea71758361",
-        "parent_span_id": "62f5489c70f2f77b",
+        "parent_span_id": "7c96ef4557e1f7e4",
         "name": "execute_tool literature_search",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "gen_ai.operation.name": "execute_tool",
           "gen_ai.tool.name": "literature_search",
@@ -928,13 +1043,13 @@
         }
       },
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
         "span_id": "9ab27a3f46ee8fea",
-        "parent_span_id": "62f5489c70f2f77b",
+        "parent_span_id": "7c96ef4557e1f7e4",
         "name": "execute_tool molecule_screening",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "gen_ai.operation.name": "execute_tool",
           "gen_ai.tool.name": "molecule_screening",
@@ -947,13 +1062,13 @@
         }
       },
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
         "span_id": "e84046cd430048c5",
-        "parent_span_id": "62f5489c70f2f77b",
+        "parent_span_id": "7c96ef4557e1f7e4",
         "name": "execute_tool report_writer",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "gen_ai.operation.name": "execute_tool",
           "gen_ai.tool.name": "report_writer",
@@ -966,13 +1081,28 @@
         }
       },
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
+        "span_id": "eda8a3ce2e0372a9",
+        "parent_span_id": "7c96ef4557e1f7e4",
+        "name": "validate trajectory_quality",
+        "kind": "internal",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
+        "attributes": {
+          "scitrace.operation.name": "validation_gate",
+          "scitrace.validation.name": "trajectory_quality",
+          "scitrace.status": "pass",
+          "scitrace.score": 1.0
+        }
+      },
+      {
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
         "span_id": "4db561992c9990dc",
-        "parent_span_id": "62f5489c70f2f77b",
+        "parent_span_id": "7c96ef4557e1f7e4",
         "name": "validate citation_integrity",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "scitrace.operation.name": "validation_gate",
           "scitrace.validation.name": "citation_integrity",
@@ -981,13 +1111,28 @@
         }
       },
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
+        "span_id": "c1d13f79182eef5a",
+        "parent_span_id": "7c96ef4557e1f7e4",
+        "name": "validate citation_support_precision",
+        "kind": "internal",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
+        "attributes": {
+          "scitrace.operation.name": "validation_gate",
+          "scitrace.validation.name": "citation_support_precision",
+          "scitrace.status": "pass",
+          "scitrace.score": 1.0
+        }
+      },
+      {
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
         "span_id": "5e6dec3a796b125a",
-        "parent_span_id": "62f5489c70f2f77b",
+        "parent_span_id": "7c96ef4557e1f7e4",
         "name": "validate artifact_replay",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "scitrace.operation.name": "validation_gate",
           "scitrace.validation.name": "artifact_replay",
@@ -996,13 +1141,13 @@
         }
       },
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
         "span_id": "4426688ba1333189",
-        "parent_span_id": "62f5489c70f2f77b",
+        "parent_span_id": "7c96ef4557e1f7e4",
         "name": "validate constraint_satisfaction",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "scitrace.operation.name": "validation_gate",
           "scitrace.validation.name": "constraint_satisfaction",
@@ -1011,13 +1156,13 @@
         }
       },
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
         "span_id": "f9a195ded253267e",
-        "parent_span_id": "62f5489c70f2f77b",
+        "parent_span_id": "7c96ef4557e1f7e4",
         "name": "validate claim_evidence_alignment",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "scitrace.operation.name": "validation_gate",
           "scitrace.validation.name": "claim_evidence_alignment",
@@ -1026,13 +1171,13 @@
         }
       },
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
         "span_id": "5e2e4053a3dc3356",
-        "parent_span_id": "62f5489c70f2f77b",
+        "parent_span_id": "7c96ef4557e1f7e4",
         "name": "validate claim_metadata_completeness",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "scitrace.operation.name": "validation_gate",
           "scitrace.validation.name": "claim_metadata_completeness",
@@ -1041,13 +1186,13 @@
         }
       },
       {
-        "trace_id": "62f5489c70f2f77b0379a5637a28c84d",
+        "trace_id": "7c96ef4557e1f7e4e9d898e1a010283b",
         "span_id": "0393a59aa396bd21",
-        "parent_span_id": "62f5489c70f2f77b",
+        "parent_span_id": "7c96ef4557e1f7e4",
         "name": "validate ai_claim_review",
         "kind": "internal",
-        "start_time": "2026-05-13T22:59:00+00:00",
-        "end_time": "2026-05-13T22:59:00+00:00",
+        "start_time": "2026-05-13T23:20:28+00:00",
+        "end_time": "2026-05-13T23:20:28+00:00",
         "attributes": {
           "scitrace.operation.name": "validation_gate",
           "scitrace.validation.name": "ai_claim_review",
