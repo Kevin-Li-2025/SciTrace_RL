@@ -1,5 +1,18 @@
 # SciTrace-RL
 
+## Positioning
+
+SciTrace-RL is retained as the scientific-agent trace and reward-data prototype.
+Its scope is auditable execution traces, validation gates, provenance bundles,
+and training records for AI-for-science workflows.
+
+It is not the general RAG or browser-search project. General retrieval and
+citation UX belongs in
+[SignalRAG](https://github.com/Kevin-Li-2025/signal-rag), and source-code
+structure retrieval belongs in
+[CodeGraph](https://github.com/Kevin-Li-2025/CodeGraph). New work here should
+keep the scientific-agent trace/reward boundary explicit.
+
 SciTrace-RL is a submission-ready demo for **AI4S Infra + scientific agents**. It turns a scientific-agent run into a reproducible execution trace, validates the trace, and converts the run into a reward-labeled training sample.
 
 The project is designed for DP Technology's "追光计划" direction:
