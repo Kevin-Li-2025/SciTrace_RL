@@ -5,6 +5,7 @@ from typing import Any
 
 from .dashboard import render_dashboard
 from .escalation import build_escalation_packet
+from .integrity import write_artifact_manifest
 from .learning_signal import build_post_training_bundle
 from .provenance import build_provenance_bundle
 from .schema import Artifact, Trace
@@ -211,4 +212,5 @@ def run_task(task_path: Path, corpus_path: Path, output_dir: Path) -> dict[str, 
             ],
         },
     )
+    write_artifact_manifest(output_dir, trace_dict["trace_id"])
     return trace_dict

@@ -7,6 +7,7 @@ from pathlib import Path
 from scitrace_rl.chemistry import formula_stats
 from scitrace_rl.deep_eval import run_deep_eval
 from scitrace_rl.eval_suite import run_eval_suite
+from scitrace_rl.integrity import ArtifactIntegrityError, verify_artifact_manifest
 from scitrace_rl.utils import read_json
 from scitrace_rl.runner import run_task
 
@@ -39,6 +40,10 @@ class RunnerTests(unittest.TestCase):
             self.assertTrue((out / "provenance_bundle.json").exists())
             self.assertTrue((out / "post_training_bundle.json").exists())
             self.assertTrue((out / "escalation_packet.json").exists())
+            self.assertTrue((out / "artifact_manifest.json").exists())
+            integrity = verify_artifact_manifest(out)
+            self.assertEqual(integrity["trace_id"], trace["trace_id"])
+            self.assertEqual(integrity["verified_files"], 10)
             provenance = read_json(out / "provenance_bundle.json")
             self.assertEqual(provenance["trace_id"], trace["trace_id"])
             self.assertIn("ro_crate", provenance)
@@ -69,6 +74,19 @@ class RunnerTests(unittest.TestCase):
             validation_by_name = {item["name"]: item for item in trace["validations"]}
             self.assertTrue(all(validation_by_name[name]["status"] == "pass" for name in required))
             self.assertEqual(validation_by_name["ai_claim_review"]["status"], "skip")
+
+    def test_artifact_manifest_detects_tampering(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            out = Path(temp_dir)
+            run_task(
+                ROOT / "data/tasks/electrolyte_additive_screen.json",
+                ROOT / "data/corpus/scientific_sources.json",
+                out,
+            )
+            (out / "demo_report.md").write_text("tampered\n", encoding="utf-8")
+
+            with self.assertRaisesRegex(ArtifactIntegrityError, "mismatch for demo_report.md"):
+                verify_artifact_manifest(out)
 
     def test_eval_suite_exercises_negative_cases(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
