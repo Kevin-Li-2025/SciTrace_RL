@@ -1,5 +1,7 @@
 # SciTrace-RL
 
+[![CI](https://github.com/yinli-systems/scitrace-rl/actions/workflows/ci.yml/badge.svg)](https://github.com/yinli-systems/scitrace-rl/actions/workflows/ci.yml)
+
 ## Positioning
 
 SciTrace-RL is retained as the scientific-agent trace and reward-data prototype.
@@ -8,9 +10,9 @@ and training records for AI-for-science workflows.
 
 It is not the general RAG or browser-search project. General retrieval and
 citation UX belongs in
-[SignalRAG](https://github.com/Kevin-Li-2025/signal-rag), and source-code
+[SignalRAG](https://github.com/yinli-systems/signal-rag), and source-code
 structure retrieval belongs in
-[CodeGraph](https://github.com/Kevin-Li-2025/CodeGraph). New work here should
+[CodeGraph](https://github.com/yinli-systems/CodeGraph). New work here should
 keep the scientific-agent trace/reward boundary explicit.
 
 SciTrace-RL is a submission-ready demo for **AI4S Infra + scientific agents**. It turns a scientific-agent run into a reproducible execution trace, validates the trace, and converts the run into a reward-labeled training sample.
@@ -112,12 +114,17 @@ flowchart LR
 └── tests/test_runner.py
 ```
 
-## Run
+## Quickstart
 
 No external Python dependency is required.
 
 ```bash
-PYTHONPATH=src python3 -m scitrace_rl.cli --out outputs
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
+
+scitrace-rl --out /tmp/scitrace-output
+scitrace-rl-verify /tmp/scitrace-output
 ```
 
 Expected output:
@@ -125,19 +132,20 @@ Expected output:
 ```text
 trace_id=trace_...
 reward=0.97
-dashboard=outputs/demo_dashboard.html
+dashboard=/tmp/scitrace-output/demo_dashboard.html
+verified 10 artifacts for trace trace_...
 ```
 
 Open the dashboard:
 
 ```bash
-open outputs/demo_dashboard.html
+open /tmp/scitrace-output/demo_dashboard.html
 ```
 
 Run tests:
 
 ```bash
-PYTHONPATH=src python3 -m unittest discover -s tests
+python -m unittest discover -s tests -v
 ```
 
 Run the eval suite:
@@ -212,6 +220,7 @@ external-result ingestion: pass
 - `docs/demo_guide.md`: what the reviewer should inspect in the demo.
 - `docs/research_basis.md`: source-backed rationale for the direction.
 - `outputs/demo_trace.json`: full trace with tool calls, artifacts, validation results, and reward.
+- `outputs/artifact_manifest.json`: byte sizes and SHA-256 content digests for every primary output in one run.
 - `outputs/provenance_bundle.json`: W3C PROV, Workflow Run RO-Crate, and OpenTelemetry span views of the same run.
 - `outputs/demo_report.md`: generated scientific-agent report.
 - `outputs/validation_scorecard.json`: machine-readable validation gates.
@@ -223,6 +232,32 @@ external-result ingestion: pass
 - `outputs/eval_deepseek_v7/eval_report.md`: DeepSeek-backed 15-case validation report from the latest real API run.
 
 By default the `ai_claim_review` gate is marked `skip`, so the demo remains reproducible without external API access. When enabled, the AI judge reviews whether generated claims are supported by retrieved evidence.
+
+## Evidence Boundaries
+
+- The default workflow is a deterministic dry-lab demonstration over a small
+  checked-in corpus and proxy chemistry features. It is not a validated
+  molecular model, simulation result, or wet-lab finding.
+- A passing reward and validation score mean the local trace satisfies this
+  repository's gates; they do not prove scientific correctness outside those
+  gates.
+- `artifact_manifest.json` hashes the bytes actually written for a run. The
+  `sha256` field on an in-trace artifact is a stable descriptor hash of its
+  kind, URI, summary, and metadata, not a substitute for the file-content
+  manifest.
+- AI-judge results require an external endpoint and are reported separately;
+  the offline default records that gate as `skip`.
+
+## Improvement Priorities
+
+1. Bind retrieved source snapshots and external compute results to immutable
+   content-addressed inputs before promoting a trace beyond demo status.
+2. Replace proxy screening with a versioned simulator or laboratory adapter and
+   preserve its environment, logs, and raw outputs in the manifest.
+3. Add schema migration tests for training and provenance exports before using
+   bundles across releases.
+4. Evaluate on independently authored tasks and expert rubrics; the current
+   15-case suite mainly validates the local gate implementation.
 
 ## Extension Plan
 

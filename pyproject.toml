@@ -11,6 +11,14 @@ license = { text = "MIT" }
 scitrace-rl = "scitrace_rl.cli:main"
 scitrace-rl-eval = "scitrace_rl.eval_suite:main"
 scitrace-rl-deep-eval = "scitrace_rl.deep_eval:main"
+scitrace-rl-verify = "scitrace_rl.integrity:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
